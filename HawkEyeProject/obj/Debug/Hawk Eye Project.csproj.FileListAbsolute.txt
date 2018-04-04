@@ -1,0 +1,12 @@
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\bin\Debug\Hawk Eye Project.exe.config
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\bin\Debug\Hawk Eye Project.exe
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\bin\Debug\Hawk Eye Project.pdb
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\obj\Debug\Hawk Eye Project.csprojResolveAssemblyReference.cache
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\obj\Debug\Hawk Eye Project.csproj.CoreCompileInputs.cache
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\obj\Debug\Hawk Eye Project.exe
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\obj\Debug\Hawk Eye Project.pdb
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\bin\Debug\Hawk Eye Project.xml
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\bin\Debug\HawkEnginer.dll
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\bin\Debug\HawkEnginer.pdb
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\bin\Debug\HawkEnginer.xml
+D:\My Appss\Hawk Eye Project\Hawk Eye Project\obj\Debug\Hawk Eye Project.csproj.CopyComplete
