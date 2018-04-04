@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Edit\FormColum.cs" />
     <Compile Include="Edit\ProgressBar.cs" />
-    <Compile Include="Enginer.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="IO\FILE.cs" />
     <Compile Include="IO\Text.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

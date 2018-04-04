@@ -15,7 +15,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 
-namespace HawkEnginer.IO
+namespace HawkEngine.IO
 {
     /// <summary>
     /// 文件的操作与管理。

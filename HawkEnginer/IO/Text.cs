@@ -8,7 +8,7 @@
 using System;
 using System.Threading;
 using System.IO;
-namespace HawkEnginer.IO
+namespace HawkEngine.IO
 {
     /// <summary>
     /// 向视图中输出各种形式的字符或字符串

@@ -5,10 +5,10 @@
  * 此类继承于HawkEnginer.IO中的Text类，可以定制长度，色彩，填充物的进度条。
  *********************************************************************************************************/
 
-using HawkEnginer.IO;
+using HawkEngine.IO;
 using System;
 
-namespace HawkEnginer.Edit
+namespace HawkEngine.Edit
 {
     /// <summary>
     /// 进度条

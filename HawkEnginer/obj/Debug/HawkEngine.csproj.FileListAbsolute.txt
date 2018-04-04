@@ -1,0 +1,7 @@
+D:\My Appss\HawkEyeProject\Hawk Eye Project\HawkEye_Enginer\DLL\HawkEnginer.xml
+D:\My Appss\HawkEyeProject\Hawk Eye Project\HawkEye_Enginer\DLL\HawkEnginer.dll
+D:\My Appss\HawkEyeProject\Hawk Eye Project\HawkEye_Enginer\DLL\HawkEnginer.pdb
+D:\My Appss\HawkEyeProject\HawkEnginer\obj\Debug\HawkEngine.csprojResolveAssemblyReference.cache
+D:\My Appss\HawkEyeProject\HawkEnginer\obj\Debug\HawkEngine.csproj.CoreCompileInputs.cache
+D:\My Appss\HawkEyeProject\HawkEnginer\obj\Debug\HawkEnginer.dll
+D:\My Appss\HawkEyeProject\HawkEnginer\obj\Debug\HawkEnginer.pdb
