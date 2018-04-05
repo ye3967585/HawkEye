@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>HawkEnginer</name>
+        <name>HawkEngine</name>
     </assembly>
     <members>
         <member name="T:HawkEngine.Edit.FormColum">
@@ -50,6 +50,20 @@
             <param name="ShowDraw">显示填充图形</param>
             <param name="Draw">填充图形样式</param>
             <param name="ForegroundColor">填充图形颜色</param>
+        </member>
+        <member name="T:HawkEngine.IO.DATA">
+            <summary>
+            对于即时数据的处理
+            </summary>
+        </member>
+        <member name="M:HawkEngine.IO.DATA.CutString(System.String,System.Int32,System.String)">
+            <summary>
+            从字符串的左侧往右删除若干个连同空格一起的字符，如果有指定标识符，则只保留标识符后的文字。
+            </summary>
+            <param name="SourceText">源字符串</param>
+            <param name="CutLenth">删除长度</param>
+            <param name="id">标识符</param>
+            <returns></returns>
         </member>
         <member name="T:HawkEngine.IO.FILE">
             <summary>
@@ -167,12 +181,12 @@
             <param name="ObjectPath">目标路径</param>
             <returns></returns>
         </member>
-        <member name="T:HawkEngine.IO.Text">
+        <member name="T:HawkEngine.IO.TEXT">
             <summary>
             向视图中输出各种形式的字符或字符串
             </summary>
         </member>
-        <member name="M:HawkEngine.IO.Text.OutPutText(System.String,System.Int32,System.Boolean,System.Int32)">
+        <member name="M:HawkEngine.IO.TEXT.OutPutText(System.String,System.Int32,System.Boolean,System.Int32)">
             <summary>
             输出普通文本
             </summary>
@@ -181,7 +195,7 @@
             <param name="isLinefeed">是否自动换行（必须与换行控制一同设定）</param>
             <param name="LineControl">换行控制（必须与否自动换行制一同设定）</param>
         </member>
-        <member name="M:HawkEngine.IO.Text.OutPutColorText(System.String,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Boolean,System.Int32)">
+        <member name="M:HawkEngine.IO.TEXT.OutPutColorText(System.String,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Boolean,System.Int32)">
             <summary>
             输出有色文本
             </summary>
@@ -192,14 +206,14 @@
             <param name="isLinefeed">是否自动换行（必须与换行控制一同设定）</param>
             <param name="LineControl">换行控制（必须与否自动换行制一同设定）</param>
         </member>
-        <member name="M:HawkEngine.IO.Text.OutPutTextFromFiles(System.String,System.Int32)">
+        <member name="M:HawkEngine.IO.TEXT.OutPutTextFromFiles(System.String,System.Int32)">
             <summary>
             来自文件的普通文本输出
             </summary>
             <param name="Path">文本文件的路径</param>
             <param name="OutSpeed">输出速度</param>
         </member>
-        <member name="M:HawkEngine.IO.Text.OutPutColorTextFromFiles(System.String,System.ConsoleColor,System.ConsoleColor,System.Int32)">
+        <member name="M:HawkEngine.IO.TEXT.OutPutColorTextFromFiles(System.String,System.ConsoleColor,System.ConsoleColor,System.Int32)">
             <summary>
             来自文件的有色文本输出
             </summary>

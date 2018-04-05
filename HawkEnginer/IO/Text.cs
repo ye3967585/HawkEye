@@ -13,7 +13,7 @@ namespace HawkEngine.IO
     /// <summary>
     /// 向视图中输出各种形式的字符或字符串
     /// </summary>
-    public class Text
+    public class TEXT
     {
         int LineCrtl;
 

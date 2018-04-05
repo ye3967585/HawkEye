@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Even.cs" />
+    <Compile Include="HEDS\File.cs" />
+    <Compile Include="HEDS\Mail.cs" />
+    <Compile Include="HEDS\Dos.cs" />
     <Compile Include="LevelManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

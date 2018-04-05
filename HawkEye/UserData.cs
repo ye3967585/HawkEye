@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace UserData
+namespace HawkEye.UserData
 {
     /// <summary>
     /// 是否结束

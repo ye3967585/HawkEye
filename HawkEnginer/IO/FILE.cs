@@ -7,13 +7,8 @@
  *********************************************************************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading;
 
 namespace HawkEngine.IO
 {
@@ -23,7 +18,7 @@ namespace HawkEngine.IO
     public class FILE
     {
         DirectoryInfo dir;
-        Text text = new Text();
+        TEXT text = new TEXT();
         string Log;  //日志
 
         /*********************** 添加与删除 ************************/

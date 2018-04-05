@@ -13,7 +13,7 @@ namespace HawkEngine.Edit
     /// <summary>
     /// 表列窗体
     /// </summary>
-    public class FormColum : Text
+    public class FormColum : TEXT
     {
         /// <summary>
         /// 无表头窗体

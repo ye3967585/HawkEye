@@ -5,36 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
-using UserData;
+using HawkEye.UserData;
 using HawkEngine.IO;
 using HawkEngine.Edit;
+using HawkEye.EvenManger;
 
-namespace LevelManager
+namespace HawkEye.LevelManager
 {
     /// <summary>
     /// 关卡管理器
     /// </summary>
-    class Level
+    public class LevelList
     {
         string LevelText;
-        Text text = new Text();
+        TEXT text = new TEXT();
         FILE file = new FILE();
         FormColum formColum = new FormColum();
         ProgressBar progressBar = new ProgressBar();
+        Even even = new Even();
+        bool isDead = false;    //是否死亡
 
         public void Level0()
         {
-            LevelText = "Game\\Text\\Level\\0\\Text_1.txt";
+            LevelText = "Game\\TEXT\\Level\\0\\Text_1.txt";
             Console.CursorVisible = false;
             Console.WriteLine();
-            text.OutPutTextFromFiles(LevelText, 45);
+            text.OutPutTextFromFiles(LevelText, 2);
             Thread.Sleep(5000);
             Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            text.OutPutColorText("\n\n\n\n\n\n\t\t\t\t      按任意键继续 \t\t\t\t\t", ConsoleColor.Yellow, ConsoleColor.Blue, 10);
+            text.OutPutColorText("\n\n\n\n\n\n\n\n\n\t\t\t\t      按任意键继续 \t\t\t\t\t", ConsoleColor.Yellow, ConsoleColor.Blue, 10);
             Console.ReadKey(true);
+            Console.Clear();
+            even.SignUpUser();
         }
     }
 }

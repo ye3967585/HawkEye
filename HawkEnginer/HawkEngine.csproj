@@ -7,8 +7,8 @@
     <ProjectGuid>{E16B00AC-F42A-487F-BE11-E292E0F377A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HawkEnginer</RootNamespace>
-    <AssemblyName>HawkEnginer</AssemblyName>
+    <RootNamespace>HawkEngine</RootNamespace>
+    <AssemblyName>HawkEngine</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,11 +16,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Hawk Eye Project\HawkEye_Enginer\DLL\</OutputPath>
+    <OutputPath>..\HawkEye\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\Hawk Eye Project\HawkEye_Enginer\DLL\HawkEnginer.xml</DocumentationFile>
+    <DocumentationFile>..\HawkEye\HawkEngine.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -47,8 +47,9 @@
     <Compile Include="Edit\FormColum.cs" />
     <Compile Include="Edit\ProgressBar.cs" />
     <Compile Include="Engine.cs" />
+    <Compile Include="IO\DATA.cs" />
     <Compile Include="IO\FILE.cs" />
-    <Compile Include="IO\Text.cs" />
+    <Compile Include="IO\TEXT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

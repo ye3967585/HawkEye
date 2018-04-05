@@ -13,7 +13,7 @@ namespace HawkEngine.Edit
     /// <summary>
     /// 进度条
     /// </summary>
-    public class ProgressBar : Text
+    public class ProgressBar : TEXT
     {
         /// <summary>
         /// 绘制进度条
