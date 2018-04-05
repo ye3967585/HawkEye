@@ -31,9 +31,9 @@ namespace HawkEye.LevelManager
             Console.CursorVisible = false;
             Console.WriteLine();
             text.OutPutTextFromFiles(LevelText, 2);
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
             Console.Clear();
-            text.OutPutColorText("\n\n\n\n\n\n\n\n\n\t\t\t\t      按任意键继续 \t\t\t\t\t", ConsoleColor.Yellow, ConsoleColor.Blue, 10);
+            text.OutPutColorText("\n\n  按任意键继续 [Press Any Key]\t\t\t\t\t\t\t\t\t", ConsoleColor.Yellow, ConsoleColor.Blue, 10);
             Console.ReadKey(true);
             Console.Clear();
             even.SignUpUser();

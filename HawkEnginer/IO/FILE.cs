@@ -9,6 +9,7 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
 
 namespace HawkEngine.IO
 {
@@ -20,6 +21,7 @@ namespace HawkEngine.IO
         DirectoryInfo dir;
         TEXT text = new TEXT();
         string Log;  //日志
+
 
         /*********************** 添加与删除 ************************/
         /// <summary>
@@ -205,7 +207,6 @@ namespace HawkEngine.IO
             Index = Directory.GetFiles(Index[PID] + "\\"); //如果存在，获取索引。
             return Index; //返回外界
         }
-
 
         /*********************** 移动与复制 ************************/
         /// <summary>

@@ -14,10 +14,10 @@ namespace HawkEye
         static void Main(string[] args)
         {
             LevelList levelList = new LevelList();
-            //levelList.Level0();
-            DATA data = new DATA();
-            string c = data.CutString("help a", 4);
-            Console.WriteLine(c);
+            levelList.Level0();
+            //DATA data = new DATA();
+            //string c = data.CutString("help a", 4);
+            //Console.WriteLine(c);
         }
     }
 }

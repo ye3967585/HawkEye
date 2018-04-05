@@ -12,12 +12,12 @@ namespace HawkEngine.IO
     public class DATA
     {
         /// <summary>
-        /// 从字符串的左侧往右删除若干个连同空格一起的字符，如果有指定标识符，则只保留标识符后的文字。
+        /// 以标识符或空格符为界，删除其左边的所有字符，包括标识符与空格符本身。
         /// </summary>
         /// <param name="SourceText">源字符串</param>
         /// <param name="CutLenth">删除长度</param>
         /// <param name="id">标识符</param>
-        /// <returns></returns>
+        /// <returns>处理后的字符串</returns>
         public string CutString(string SourceText,int CutLenth,string id=null)
         {
             string SubText=SourceText;
