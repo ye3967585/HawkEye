@@ -82,7 +82,7 @@ namespace HawkEngine.IO
         /// <param name="OutSpeed">输出速度</param>
         public void OutPutTextFromFiles(string Path, int OutSpeed = 0)
         {
-            string FileText = System.IO.File.ReadAllText(Path);
+            string FileText = File.ReadAllText(Path);
             OutPutText(FileText, OutSpeed);
         }
         /// <summary>
