@@ -49,6 +49,7 @@
     <Compile Include="Engine.cs" />
     <Compile Include="IO\DATA.cs" />
     <Compile Include="IO\FILE.cs" />
+    <Compile Include="IO\GRAPHICAL.cs" />
     <Compile Include="IO\TEXT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HawkEye.HEDS.File
+namespace HawkEye.HEDS.Files
 {
     class FileSystem
     {

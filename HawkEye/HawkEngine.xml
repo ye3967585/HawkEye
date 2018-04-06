@@ -9,18 +9,18 @@
             表列窗体
             </summary>
         </member>
-        <member name="M:HawkEngine.Edit.FormColum.ShowSimpleFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor)">
+        <member name="M:HawkEngine.Edit.FormColum.ShowSimpleHollowFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor)">
             <summary>
-            无表头窗体
+            无表头镂空窗体
             </summary>
             <param name="Title">标题</param>
             <param name="Count">标题栏长度</param>
             <param name="Speed">显示速度</param>
             <param name="color">颜色</param>
         </member>
-        <member name="M:HawkEngine.Edit.FormColum.ShowRichFormColumn(System.String,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.ConsoleColor)">
+        <member name="M:HawkEngine.Edit.FormColum.ShowRichHollowFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            有表头窗体
+            有表头镂空窗体
             </summary>
             <param name="Title">标题</param>
             <param name="Count">标题栏长度</param>
@@ -34,6 +34,38 @@
             <param name="H_7">表头7</param>
             <param name="H_8">表头8</param>
             <param name="color">颜色</param>
+        </member>
+        <member name="M:HawkEngine.Edit.FormColum.ShowSimpleSolidFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            无表头实心窗体
+            P.S. Count.Length=Title.Length
+            </summary>
+            <param name="Title">标题</param>
+            <param name="Count">标题栏长度</param>
+            <param name="Speed">显示速度</param>
+            <param name="ForegroundColor">前景色</param>
+            <param name="BackgroundColor">背景色</param>
+        </member>
+        <member name="M:HawkEngine.Edit.FormColum.ShowRichSolidFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            有表头实心窗体
+            P.S. Count.Length=Title.Length
+            </summary>
+            <param name="Title">标题</param>
+            <param name="Count">标题栏长度</param>
+            <param name="Speed">显示速度</param>
+            <param name="TextForegroundColor">文本前景色</param>
+            <param name="TextBackgroundColor">文本背景色</param>
+            <param name="ColumForegroundColor">表头前景色</param>
+            <param name="ColumBackgroundColor">表头背景色</param>
+            <param name="H_1">表头1</param>
+            <param name="H_2">表头2</param>
+            <param name="H_3">表头3</param>
+            <param name="H_4">表头4</param>
+            <param name="H_5">表头5</param>
+            <param name="H_6">表头6</param>
+            <param name="H_7">表头7</param>
+            <param name="H_8">表头8</param>
         </member>
         <member name="T:HawkEngine.Edit.ProgressBar">
             <summary>
@@ -180,6 +212,11 @@
             <param name="FileName">文件名</param>
             <param name="ObjectPath">目标路径</param>
             <returns></returns>
+        </member>
+        <member name="T:HawkEngine.IO.GRAPHICAL">
+            <summary>
+            图形控制
+            </summary>
         </member>
         <member name="T:HawkEngine.IO.TEXT">
             <summary>
