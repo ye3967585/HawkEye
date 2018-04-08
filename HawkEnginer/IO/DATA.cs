@@ -27,7 +27,7 @@ namespace HawkEngine.IO
                 if (id != null) //如果用户指定了标识符，则在原有的删除空格的基础上也删除标识符，只留下标识符右侧的字符串。
                 {
                     //公式:处理后的字符串=源字符串-删除长度+空格数量+标识符长度-1
-                    SubText = SourceText.Substring(CutLenth +space+id.Length+1);
+                    SubText = SourceText.Substring(CutLenth +space+id.Length-1);
                 }
                 else if (SourceText[i]==' ') //如遇空格，计算空格数量
                 {

@@ -15,6 +15,7 @@ namespace HawkEngine.Edit
     /// </summary>
     public class FormColum : TEXT
     {
+        #region 低级窗体
         /// <summary>
         /// 无表头镂空窗体
         /// </summary>
@@ -121,5 +122,46 @@ namespace HawkEngine.Edit
             OutPutColorText(" ", ColumForegroundColor, ColumBackgroundColor, Speed);
             OutPutColorText(H_1 + H_2 + H_3 + H_4 + H_5 + H_6 + H_7 + H_8, ColumForegroundColor, ColumBackgroundColor, Speed);
         }
+        #endregion
+
+        #region 高级窗体
+        /// <summary>
+        /// 高级固定无信息栏无输入窗体
+        /// </summary>
+        /// <param name="Text">标题</param>
+        /// <param name="Top">最大长度</param>
+        /// <param name="ForegroundColor"></param>
+        /// <param name="BackgroundColor"></param>
+        public void ShowAdvanced_NoInfo_NoInput_Form(string Text,int Top,ConsoleColor ForegroundColor,ConsoleColor BackgroundColor)
+        {
+            
+            Console.WriteLine();
+            ShowSimpleSolidFormColumn("COMMAND WINDOW", 80, 0, ConsoleColor.Black, ConsoleColor.Green); //+1
+            int MaxLine = Get_Set_WH(Top);
+            Console.ForegroundColor = ForegroundColor;
+            if (MaxLine > 50)
+            {
+                Top++;
+            }
+            ShowSimpleSolidFormColumn(" ", 80, 0, ConsoleColor.Black, ConsoleColor.Green); //+1
+        }
+        #endregion(实验)
+
+        #region 私有函数
+
+        /// <summary>
+        /// 将光标设定在窗体正中央，并且返回最大行数
+        /// </summary>
+        /// <param name="Top">顶端坐标</param>
+        /// <returns></returns>
+        int Get_Set_WH(int Top)
+        {
+            Console.SetCursorPosition(0, 28);
+            int MaxLine = Console.CursorTop; //获取行位置
+            Console.SetCursorPosition(0, 3); //回归原位
+            return MaxLine;
+        }
+
+        #endregion
     }
 }

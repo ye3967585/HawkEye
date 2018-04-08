@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading;
 using HawkEye.LevelManager;
 using HawkEngine.IO;
@@ -17,6 +17,7 @@ namespace HawkEye
             LevelList levelList = new LevelList();
             DosSystem dosSystem = new DosSystem();
             FormColum formColum = new FormColum();
+            DATA data = new DATA();
             //levelList.Level0();
             //DATA data = new DATA();
             //string c = data.CutString("help a", 4);
@@ -30,6 +31,9 @@ namespace HawkEye
             //Console.WriteLine();
             //Console.WriteLine();
             dosSystem.Command();
+            //string Input = "ver -user";
+            //Input = data.CutString(Input, 3, "-");
+            //Console.WriteLine(Input);
         }
     }
 }

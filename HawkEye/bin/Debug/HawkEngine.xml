@@ -67,6 +67,22 @@
             <param name="H_7">表头7</param>
             <param name="H_8">表头8</param>
         </member>
+        <member name="M:HawkEngine.Edit.FormColum.ShowAdvanced_NoInfo_NoInput_Form(System.String,System.Int32,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            高级固定无信息栏无输入窗体
+            </summary>
+            <param name="Text">标题</param>
+            <param name="Top">最大长度</param>
+            <param name="ForegroundColor"></param>
+            <param name="BackgroundColor"></param>
+        </member>
+        <member name="M:HawkEngine.Edit.FormColum.Get_Set_WH(System.Int32)">
+            <summary>
+            将光标设定在窗体正中央，并且返回最大行数
+            </summary>
+            <param name="Top">顶端坐标</param>
+            <returns></returns>
+        </member>
         <member name="T:HawkEngine.Edit.ProgressBar">
             <summary>
             进度条
