@@ -111,10 +111,18 @@ namespace HawkEngine.IO
         public string GetTextData(string Path, string FileName)
         {
             /************ 创建文件读取流 ************/
-            StreamReader TextData = new StreamReader(Path + FileName);
-            string Text = TextData.ReadLine();  //获取文本文件内容
-            TextData.Close();
-            return Text;  //向外界返回
+            if (File.Exists(Path + FileName))
+            {
+                StreamReader TextData = new StreamReader(Path + FileName);
+                string Text = TextData.ReadLine();  //获取文本文件内容
+                TextData.Close();
+                return Text;  //向外界返回
+            }
+            else
+            {
+                return null;
+            }
+
         }
         /// <summary>
         /// 通过索引号获取文本文件中的文本。
@@ -137,7 +145,7 @@ namespace HawkEngine.IO
         /// <returns>文件内容</returns>
         public object GetObjectData(string Path, string FileName)
         {
-            object _Object;   //用于接收对象数据的变量
+            object _Object = null;   //用于接收对象数据的变量
             /************ 创建文件流 ************/
             FileStream Stream = new FileStream(Path + FileName, FileMode.Open);
             /************ 从文件流中反序列化 ************/
@@ -154,7 +162,7 @@ namespace HawkEngine.IO
         public string[] GetDirIndex(string Path)
         {
             string[] Index;  //用于接收索引的字符串数组
-            if (Directory.Exists(Path)) //判断路径是否存在
+            if (Directory.Exists(Path+"\\")) //判断路径是否存在
             {
                 Index = Directory.GetDirectories(Path); //如果存在，获取索引。
                 return Index; //返回外界

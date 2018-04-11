@@ -7,6 +7,7 @@ using HawkEye.LevelManager;
 using HawkEngine.IO;
 using HawkEngine.Edit;
 using HawkEye.HEDS.Dos;
+using HawkEye.HEDS.Files;
 
 namespace HawkEye
 {
@@ -14,10 +15,12 @@ namespace HawkEye
     {
         static void Main(string[] args)
         {
-            LevelList levelList = new LevelList();
-            DosSystem dosSystem = new DosSystem();
+            LevelList levelList = new LevelList(); 
             FormColum formColum = new FormColum();
             DATA data = new DATA();
+
+            DosSystem dosSystem = new DosSystem();
+            FileSystem fileSystem = new FileSystem();
             //levelList.Level0();
             //DATA data = new DATA();
             //string c = data.CutString("help a", 4);
@@ -30,7 +33,8 @@ namespace HawkEye
             //formColum.ShowSimpleSolidFormColumn("Hello Man asdasd", 50, 0, ConsoleColor.Black, ConsoleColor.Green);
             //Console.WriteLine();
             //Console.WriteLine();
-            dosSystem.Command();
+            //dosSystem.Command();
+            fileSystem.Command();
             //string Input = "ver -user";
             //Input = data.CutString(Input, 3, "-");
             //Console.WriteLine(Input);

@@ -11,7 +11,7 @@ namespace HawkEye.HEDS.Dos
 {
     class DosSystem
     {
-        string Name;
+        string Name; //玩家名
         string SystemText;
         string Input;
         int NowLine;             //光标1的行位置
@@ -23,6 +23,8 @@ namespace HawkEye.HEDS.Dos
         FormColum formColum = new FormColum();
         PlayerData playerData = new PlayerData();
 
+        string HelpPath = "Game\\Text\\Help\\help.txt";
+        string PlayDataPath = "Game\\Save\\";
         public void StartingSystem()
         {
             SystemText = File.ReadAllText("Game\\Text\\heds.txt");
@@ -67,7 +69,7 @@ namespace HawkEye.HEDS.Dos
                 #region Info
                 else if (Input.Contains("info"))  //如果包含info，进入子判断语句
                 {
-                    if (Input.Length > 4) //如果>主命令代码的长度，则视为有参数
+                    if (Input.Length > 4) //如果 实际输入长度>主命令代码的长度，则视为有参数
                     {
                         Input = data.CutString(Input, 4, "-"); //裁字符串，只剩下参数值
                         GetInfo(Input); //输入参数值
@@ -79,10 +81,19 @@ namespace HawkEye.HEDS.Dos
                 }
                 #endregion
 
+                #region Help
+                else if (Input.Contains("help"))
+                {
+                    text.OutPutTextFromFiles("Game\\Text\\Help\\help.txt",1);
+                }
+                #endregion
+
                 else if (Input.Length < 1) ;
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("  >未知的命令 {0}", Input);
+                    Console.ForegroundColor = ConsoleColor.Green;
                 }
             }
         }
@@ -96,11 +107,11 @@ namespace HawkEye.HEDS.Dos
         int DrawUI()
         {
             string Name = "MONA";
-            playerData = (PlayerData)file.GetObjectData("Game\\Save\\" + Name + "\\", "Gamesave_" + Name + ".hawksav");
+            playerData = (PlayerData)file.GetObjectData(PlayDataPath + Name + "\\", "Gamesave_" + Name + ".hawksav");
             int MaxLine;
             /********* 画顶端UI *********/
             Console.WriteLine();  //+1
-            formColum.ShowSimpleSolidFormColumn("COMMAND", 80, 0, ConsoleColor.Black, ConsoleColor.Green); //+1
+            formColum.ShowSimpleSolidFormColumn("SYSTEM COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green); //+1
             //Console.WriteLine(""); //+4
             Console.ForegroundColor = ConsoleColor.Green;
             /********* 画底部UI *********/

@@ -29,15 +29,15 @@ namespace HawkEngine.Edit
             Console.Write(" ");
             for (int i = 0; i < Count; i++)
             {
-                OutPutColorText("-", color, ConsoleColor.Black, Speed);
+                OutPutColorText("=", color, ConsoleColor.Black, Speed);
             }
             /*********** 标题文本 ***********/
-            OutPutColorText("\n " + Title, color, ConsoleColor.Black, Speed, true, Count);
+            OutPutColorText("\n |" + Title, color, ConsoleColor.Black, Speed, true, Count);
 
             Console.Write(" ");
             for (int i = 0; i < Count; i++)
             {
-                OutPutColorText("-", color, ConsoleColor.Black, Speed);
+                OutPutColorText("=", color, ConsoleColor.Black, Speed);
             }
         }
         /// <summary>
