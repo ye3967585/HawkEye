@@ -8,7 +8,7 @@
 using System;
 using System.Threading;
 using System.IO;
-namespace HawkEngine.IO
+namespace HawkEngine.IO.Text
 {
     /// <summary>
     /// 向视图中输出各种形式的字符或字符串
@@ -82,7 +82,7 @@ namespace HawkEngine.IO
         /// <param name="OutSpeed">输出速度</param>
         public void OutPutTextFromFiles(string Path, int OutSpeed = 0)
         {
-            string FileText = File.ReadAllText(Path);
+            string FileText = System.IO.File.ReadAllText(Path);
             OutPutText(FileText, OutSpeed);
         }
         /// <summary>

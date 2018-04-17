@@ -2,10 +2,10 @@
 /*********************************************************************************************************
  * Hawk Enginer - Edit 进度条 V0.01  
  * By ChihHuCheYeh
- * 此类继承于HawkEnginer.IO中的Text类，可以定制长度，色彩，表头，表列的表列窗体。
+ * =可以定制长度，色彩，表头，表列的表列窗体。
  *********************************************************************************************************/
 
-using HawkEngine.IO;
+using HawkEngine.IO.Text;
 using System;
 
 namespace HawkEngine.Edit
@@ -13,8 +13,10 @@ namespace HawkEngine.Edit
     /// <summary>
     /// 表列窗体
     /// </summary>
-    public class FormColum : TEXT
+    public class FormColum
     {
+        TEXT text = new TEXT();
+
         #region 低级窗体
         /// <summary>
         /// 无表头镂空窗体
@@ -29,15 +31,15 @@ namespace HawkEngine.Edit
             Console.Write(" ");
             for (int i = 0; i < Count; i++)
             {
-                OutPutColorText("=", color, ConsoleColor.Black, Speed);
+                text.OutPutColorText("=", color, ConsoleColor.Black, Speed);
             }
             /*********** 标题文本 ***********/
-            OutPutColorText("\n |" + Title, color, ConsoleColor.Black, Speed, true, Count);
+            text.OutPutColorText("\n |" + Title, color, ConsoleColor.Black, Speed, true, Count);
 
             Console.Write(" ");
             for (int i = 0; i < Count; i++)
             {
-                OutPutColorText("=", color, ConsoleColor.Black, Speed);
+                text.OutPutColorText("=", color, ConsoleColor.Black, Speed);
             }
         }
         /// <summary>
@@ -60,7 +62,7 @@ namespace HawkEngine.Edit
             /*********** 标题栏***********/
             ShowSimpleHollowFormColumn(Title, Count, Speed, color);
             /*********** 表头栏***********/
-            OutPutColorText("\n" + H_1 + "   " + H_2 + "    " + H_3 + "    " + H_4 + "    " + H_5 + "    " + H_6 + "    " + H_7 + "    " + H_8 + "    \n", color, ConsoleColor.Black, Speed);
+            text.OutPutColorText("\n" + H_1 + "   " + H_2 + "    " + H_3 + "    " + H_4 + "    " + H_5 + "    " + H_6 + "    " + H_7 + "    " + H_8 + "    \n", color, ConsoleColor.Black, Speed);
         }
         /// <summary>
         /// 无表头实心窗体
@@ -75,13 +77,13 @@ namespace HawkEngine.Edit
         {
             /*********** 标题栏 ***********/
             Console.Write(" ");
-            OutPutColorText(" ", ForegroundColor, BackgroundColor, Speed);   //输出标题
-            OutPutColorText(Title, ForegroundColor, BackgroundColor, Speed); //输出标题
+            text.OutPutColorText(" ", ForegroundColor, BackgroundColor, Speed);   //输出标题
+            text.OutPutColorText(Title, ForegroundColor, BackgroundColor, Speed); //输出标题
             /*** 以下操作是为了防止标题的长度与实际的长度叠加，导致实际长度与传入Count参数的长度不符 ***/
             for (int j = 0; j < Count - Title.Length; j++) //根据标题栏的长度与标题文本的长度，补差值，直到总体长度和Count参数的值相同
             {
                 //输出补充的长度背景
-                OutPutColorText(" ", ForegroundColor, BackgroundColor, Speed);
+                text.OutPutColorText(" ", ForegroundColor, BackgroundColor, Speed);
             }
         }
         /// <summary>
@@ -108,19 +110,19 @@ namespace HawkEngine.Edit
             int ColumBackgroundLength = Count;
             /*********** 标题栏 ***********/
             Console.Write(" ");
-            OutPutColorText(" ", TextForegroundColor, TextBackgroundColor, Speed);   //输出标题
-            OutPutColorText(Title, TextForegroundColor, TextBackgroundColor, Speed); //输出标题
+            text.OutPutColorText(" ", TextForegroundColor, TextBackgroundColor, Speed);   //输出标题
+            text.OutPutColorText(Title, TextForegroundColor, TextBackgroundColor, Speed); //输出标题
             /*** 以下操作是为了防止标题的长度与实际的长度叠加，导致实际长度与传入Count参数的长度不符 ***/
             for (int j = 0; j < Count - Title.Length; j++) //根据标题栏的长度与标题文本的长度，补差值，直到总体长度和Count参数的值相同
             {
                 //输出补充的长度背景
-                OutPutColorText(" ", TextForegroundColor, TextBackgroundColor, Speed);
+                text.OutPutColorText(" ", TextForegroundColor, TextBackgroundColor, Speed);
                 //OutPutColorText(" ", ColumForegroundColor, ColumBackgroundColor, Speed);
             }
             /*********** 表头栏***********/
             Console.Write("\n ");
-            OutPutColorText(" ", ColumForegroundColor, ColumBackgroundColor, Speed);
-            OutPutColorText(H_1 + H_2 + H_3 + H_4 + H_5 + H_6 + H_7 + H_8, ColumForegroundColor, ColumBackgroundColor, Speed);
+            text.OutPutColorText(" ", ColumForegroundColor, ColumBackgroundColor, Speed);
+            text.OutPutColorText(H_1 + H_2 + H_3 + H_4 + H_5 + H_6 + H_7 + H_8, ColumForegroundColor, ColumBackgroundColor, Speed);
         }
         #endregion
 

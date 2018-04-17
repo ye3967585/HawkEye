@@ -1,17 +1,18 @@
-﻿using System;
-using System.IO;
-using System.Threading;
-using System.Runtime.InteropServices;
-using HawkEngine.IO;
-using HawkEngine.Edit;
-using HawkEye.EvenManger;
+﻿using HawkEngine.Edit;
+using HawkEngine.IO.Data;
+using HawkEngine.IO.File;
+using HawkEngine.IO.Text;
 using HawkEye.UserData;
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace HawkEye.HEDS.Dos
 {
     class DosSystem
     {
-        string Name; //玩家名
+        string Name;              //玩家名
         string SystemText;
         string Input;
         int NowLine;             //光标1的行位置
@@ -25,6 +26,9 @@ namespace HawkEye.HEDS.Dos
 
         string HelpPath = "Game\\Text\\Help\\help.txt";
         string PlayDataPath = "Game\\Save\\";
+        /// <summary>
+        /// 开机动画
+        /// </summary>
         public void StartingSystem()
         {
             SystemText = File.ReadAllText("Game\\Text\\heds.txt");
@@ -41,10 +45,14 @@ namespace HawkEye.HEDS.Dos
             text.OutPutColorText(" Version 1.0.5 Realse CopyRight Hawk Eye 1985-1994          \n", ConsoleColor.Black, ConsoleColor.Green, 15);
 
         }
+
         #region 命令行视口
         public void Command()
         {
-            MaxLine = DrawUI(); // 绘制UI
+            Console.WriteLine();
+            formColum.ShowSimpleSolidFormColumn("SYSTEM COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n");
             GetInfo("user"); // 显示基本的信息
             /*
              * 命令的判断思路：
@@ -54,37 +62,31 @@ namespace HawkEye.HEDS.Dos
              */
             while (!BreakThis)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 NowLine = Console.CursorTop;  //移动光标至第二行，防止覆盖标题
-                Console.Write("  User>");
+                Console.Write("\n  User>");
                 Input = Console.ReadLine();
                 if (Input == "cls")
                 {
                     Console.Clear();
-                    //formColum.ShowSimpleSolidFormColumn("COMMAND WINDOW", 80, 0, ConsoleColor.Black, ConsoleColor.Green);
-                    //Console.WriteLine("\n");
-                    //Console.ForegroundColor = ConsoleColor.Green;
-                    MaxLine = DrawUI();
+                    formColum.ShowSimpleSolidFormColumn("SYSTEM COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green);
+                    Console.WriteLine("\n");
                 }
 
                 #region Info
                 else if (Input.Contains("info"))  //如果包含info，进入子判断语句
                 {
-                    if (Input.Length > 4) //如果 实际输入长度>主命令代码的长度，则视为有参数
-                    {
-                        Input = data.CutString(Input, 4, "-"); //裁字符串，只剩下参数值
-                        GetInfo(Input); //输入参数值
-                    }
-                    else //否则只进行一般无参的输出（如果调用的功能支持无参）
-                    {
-                        GetInfo(Input);
-                    }
+                    Input = data.CutString(Input, 4); //裁字符串，只剩下参数值
+                    GetInfo(Input); //输入参数值
                 }
                 #endregion
 
                 #region Help
                 else if (Input.Contains("help"))
                 {
-                    text.OutPutTextFromFiles("Game\\Text\\Help\\help.txt",1);
+                    //如果输入的是无参指令，那么此函数将不会生效
+                    Input = data.CutString(Input, 4);
+                    Help(Input);
                 }
                 #endregion
 
@@ -101,66 +103,44 @@ namespace HawkEye.HEDS.Dos
 
         #region 适用于本模块的私有方法集
         #region --UI
-        /// <summary>
-        /// 绘制UI
-        /// </summary>
-        int DrawUI()
-        {
-            string Name = "MONA";
-            playerData = (PlayerData)file.GetObjectData(PlayDataPath + Name + "\\", "Gamesave_" + Name + ".hawksav");
-            int MaxLine;
-            /********* 画顶端UI *********/
-            Console.WriteLine();  //+1
-            formColum.ShowSimpleSolidFormColumn("SYSTEM COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green); //+1
-            //Console.WriteLine(""); //+4
-            Console.ForegroundColor = ConsoleColor.Green;
-            /********* 画底部UI *********/
-            Console.SetCursorPosition(0, 28);//光标移动到底部
-            MaxLine = Console.CursorTop;  //+1
-            Name = "MONA";          
-            //formColum.ShowSimpleSolidFormColumn("User:"+playerData.Name+"-"+playerData.LevelName+"/IP:"+playerData.IP+"/Date:"+DateTime.Now.AddYears(-30).ToShortDateString().ToString(), 80, 0, ConsoleColor.Black, ConsoleColor.Green); //+1
-            Console.SetCursorPosition(0, 3); //光标移动回原位
-            return MaxLine; //向外界返回
-        }
-
+        
         /// <summary>
         /// 获取信息
         /// </summary>
         /// <param name="Input">输入</param>
         void GetInfo(string Input=null)
         {
-
-            Console.Write("  系统信息 : (C)1988-1997 Hawk Eye Dos System V 1.5.1\n");
-            if (Input.Contains("user"))
+            //如果没有裁剪，那么肯定就是无参指令，否则就执行相应的参数
+            if (Input.Contains("info"))
             {
+                Console.Write("  系统信息 : (C)1988-1997 Hawk Eye Dos System V 1.5.1\n");
+            }
+            else if (Input.Contains("user"))
+            {
+                Console.Write("  系统信息 : (C)1988-1997 Hawk Eye Dos System V 1.5.1\n");
                 Console.Write("  用户名 : {0} \\" + " IP : {1} \\ " + " 等级L : {2}-{3}\n\n", playerData.Name, playerData.IP, playerData.Level, playerData.LevelName);
             }
             
         }
-        #endregion
-        #region --按键检查
-        [DllImport("user32.dll", EntryPoint = "GetKeyboardState")]
-        public static extern int GetKeyboardState(byte[] pbKeyState);
-        public static bool CapsLockStatus {
-            get {
-                byte[] bs = new byte[256];
-                GetKeyboardState(bs);
-                return (bs[0x14] == 1);
-            }
-        }
-        /// <summary>
-        /// 检查大写是否被打开
-        /// </summary>
-        /// <returns></returns>
-        bool CapsLockCheck()
+
+        void Help(string Input)
         {
-            if (CapsLockStatus)
+            //如果没有裁剪，那么肯定就是无参指令，否则就执行相应的参数
+            if (Input.Contains("help"))
             {
-                return true;
+                text.OutPutTextFromFiles("Game\\Text\\Help\\help.txt", 1);
+            }else if (Input.Contains("file"))
+            {
+                text.OutPutTextFromFiles("Game\\Text\\Help\\file.txt", 1);
+            }else if (Input.Contains("mail"))
+            {
+                text.OutPutTextFromFiles("Game\\Text\\Help\\mail.txt", 1);
             }
             else
             {
-                return false;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  >{0} 是 help 命令中未知的参数", Input);
+                Console.ForegroundColor = ConsoleColor.Green;
             }
         }
         #endregion

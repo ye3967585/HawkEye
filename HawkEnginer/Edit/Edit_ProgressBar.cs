@@ -2,10 +2,10 @@
 /*********************************************************************************************************
  * Hawk Enginer - Edit 进度条 V0.01  
  * By ChihHuCheYeh
- * 此类继承于HawkEnginer.IO中的Text类，可以定制长度，色彩，填充物的进度条。
+ * 定制长度，色彩，填充物的进度条。
  *********************************************************************************************************/
 
-using HawkEngine.IO;
+using HawkEngine.IO.Text;
 using System;
 
 namespace HawkEngine.Edit
@@ -13,8 +13,9 @@ namespace HawkEngine.Edit
     /// <summary>
     /// 进度条
     /// </summary>
-    public class ProgressBar : TEXT
+    public class ProgressBar
     {
+        TEXT text = new TEXT();
         /// <summary>
         /// 绘制进度条
         /// </summary>
@@ -31,14 +32,14 @@ namespace HawkEngine.Edit
             {
                 for (int i = 0; i <= Count; i++)
                 {
-                    OutPutColorText(Draw, DrawColor, Color, Speed);
+                    text.OutPutColorText(Draw, DrawColor, Color, Speed);
                 }
             }
             else
             {
                 for (int i = 0; i <= Count; i++)
                 {
-                    OutPutColorText("  ", DrawColor, Color, Speed);
+                    text.OutPutColorText("  ", DrawColor, Color, Speed);
                 }
             }
 

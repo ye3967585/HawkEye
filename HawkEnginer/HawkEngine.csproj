@@ -44,13 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Edit\FormColum.cs" />
-    <Compile Include="Edit\ProgressBar.cs" />
+    <Compile Include="Edit\Edit_FormColum.cs" />
+    <Compile Include="Edit\Edit_ProgressBar.cs" />
     <Compile Include="Engine.cs" />
-    <Compile Include="IO\DATA.cs" />
-    <Compile Include="IO\FILE.cs" />
-    <Compile Include="IO\GRAPHICAL.cs" />
-    <Compile Include="IO\TEXT.cs" />
+    <Compile Include="IO\IO_Data.cs" />
+    <Compile Include="IO\IO_File.cs" />
+    <Compile Include="IO\IO_Graphical.cs" />
+    <Compile Include="IO\IO_Text.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

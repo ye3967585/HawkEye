@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HawkEngine.IO;
 
-namespace HawkEngine.IO
+namespace HawkEngine.IO.Graphical
 {
     /// <summary>
     /// 图形控制
@@ -15,9 +11,5 @@ namespace HawkEngine.IO
         int Hight; //缓冲区高度
         int Weghit; //缓冲区宽度
         int CursorPos;//光标位置
-
-        void a()
-        {
-        }
     }
 }

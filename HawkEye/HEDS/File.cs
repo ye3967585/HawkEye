@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using HawkEngine.IO;
-using HawkEngine.Edit;
-using HawkEye.EvenManger;
+﻿using HawkEngine.Edit;
+using HawkEngine.IO.Data;
+using HawkEngine.IO.File;
+using HawkEngine.IO.Text;
 using HawkEye.UserData;
+using System;
 using System.IO;
-using System.Threading;
 
 namespace HawkEye.HEDS.Files
 {
@@ -100,9 +96,9 @@ namespace HawkEye.HEDS.Files
         /// </summary>
         void GetDiskView()
         {
-            //diskinfo.DISK_C = 64;
-            //diskinfo.DISK_E = 35;
-            //diskinfo.DISK_F = 128;
+            diskinfo.DISK_C = 64;
+            diskinfo.DISK_E = 35;
+            diskinfo.DISK_F = 128;
             //图示
             Console.Write("\n  占用比 [ C / D / E ]\n\n  ");
             GetState(diskinfo.DISK_C); 

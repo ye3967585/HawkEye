@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Threading;
-using HawkEye.LevelManager;
-using HawkEngine.IO;
-using HawkEngine.Edit;
+﻿using HawkEngine.Edit;
+using HawkEngine.IO.Data;
+using HawkEngine.IO.File;
 using HawkEye.HEDS.Dos;
 using HawkEye.HEDS.Files;
+using HawkEye.LevelManager;
+using System;
 
 namespace HawkEye
 {
@@ -21,6 +18,7 @@ namespace HawkEye
 
             DosSystem dosSystem = new DosSystem();
             FileSystem fileSystem = new FileSystem();
+            FILE file = new FILE();
             //levelList.Level0();
             //DATA data = new DATA();
             //string c = data.CutString("help a", 4);
@@ -33,11 +31,12 @@ namespace HawkEye
             //formColum.ShowSimpleSolidFormColumn("Hello Man asdasd", 50, 0, ConsoleColor.Black, ConsoleColor.Green);
             //Console.WriteLine();
             //Console.WriteLine();
-            //dosSystem.Command();
-            fileSystem.Command();
+            dosSystem.Command();
+            //fileSystem.Command();
             //string Input = "ver -user";
             //Input = data.CutString(Input, 3, "-");
             //Console.WriteLine(Input);
+
         }
     }
 }

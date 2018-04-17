@@ -9,3 +9,14 @@ D:\My Appss\HawkEyeProject\HawkEye\obj\Debug\HawkEye.pdb
 D:\My Appss\HawkEyeProject\HawkEye\bin\Debug\HawkEngine.dll
 D:\My Appss\HawkEyeProject\HawkEye\bin\Debug\HawkEngine.pdb
 D:\My Appss\HawkEyeProject\HawkEye\bin\Debug\HawkEngine.xml
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\obj\Debug\HawkEye.csprojResolveAssemblyReference.cache
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\obj\Debug\HawkEye.csproj.CoreCompileInputs.cache
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\obj\Debug\HawkEye.exe
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\obj\Debug\HawkEye.pdb
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEye.exe.config
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEye.exe
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEye.pdb
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEngine.dll
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEngine.pdb
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEngine.xml
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\obj\Debug\HawkEye.csproj.CopyComplete

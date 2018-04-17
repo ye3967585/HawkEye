@@ -6,12 +6,13 @@
  * 简单明瞭的的解决方案。
  *********************************************************************************************************/
 
+using HawkEngine.IO.Text;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 
-namespace HawkEngine.IO
+namespace HawkEngine.IO.File
 {
     /// <summary>
     /// 文件的操作与管理。
@@ -20,9 +21,8 @@ namespace HawkEngine.IO
     {
         DirectoryInfo dir;
         TEXT text = new TEXT();
-        string Log;  //日志
 
-
+        #region AddDelete
         /*********************** 添加与删除 ************************/
         /// <summary>
         /// 根据输入名称创建新的路径，如果已经存在相同的路径，则会自动覆盖
@@ -34,8 +34,6 @@ namespace HawkEngine.IO
             /************ 创建文件夹 ************/
             dir = new DirectoryInfo(Path);         //指定路径
             dir.CreateSubdirectory(Name);          //创建玩家档案文件夹
-            /************ 添加信息至日志 ************/
-            Log += DateTime.Now + "---创建路径 : " + Path + "\\" + Name + "\n";
         }
         /// <summary>
         /// 创建文本文件,并输出到指定路径,如果文件已经存在，则会自动覆盖。
@@ -72,9 +70,9 @@ namespace HawkEngine.IO
         public bool DelDir(string Path, string Name)
         {
             /************ 删除路径 ************/
-            if (File.Exists(Path + Name)) //如果路径存在，则删除。
+            if (System.IO.File.Exists(Path + Name)) //如果路径存在，则删除。
             {
-                File.Delete(Path + Name);
+                System.IO.File.Delete(Path + Name);
                 return true;  //向外界返回 true。
             }
             else
@@ -90,9 +88,9 @@ namespace HawkEngine.IO
         public bool DelFile(string Path, string FileName)
         {
             /************ 删除文件 ************/
-            if (File.Exists(Path + FileName)) //如果文件存在，则删除。
+            if (System.IO.File.Exists(Path + FileName)) //如果文件存在，则删除。
             {
-                File.Delete(Path + FileName);
+                System.IO.File.Delete(Path + FileName);
                 return true;  //向外界返回 true。
             }
             else
@@ -100,7 +98,9 @@ namespace HawkEngine.IO
                 return false; //否则返回 false。
             }
         }
+        #endregion
 
+        #region Get
         /*********************** 获取与访问 ************************/
         /// <summary>
         /// 获取文本文件中的文本。
@@ -111,7 +111,7 @@ namespace HawkEngine.IO
         public string GetTextData(string Path, string FileName)
         {
             /************ 创建文件读取流 ************/
-            if (File.Exists(Path + FileName))
+            if (System.IO.File.Exists(Path + FileName))
             {
                 StreamReader TextData = new StreamReader(Path + FileName);
                 string Text = TextData.ReadLine();  //获取文本文件内容
@@ -173,18 +173,6 @@ namespace HawkEngine.IO
             }
         }
         /// <summary>
-        /// 通过索引号获取路径。
-        /// </summary>
-        /// <param name="Path"></param>
-        /// <param name="Index"></param>
-        /// <param name="PID"></param>
-        /// <returns>路径索引目录表</returns>
-        public string[] GetDirIndexPID(string[] Index, int PID)
-        {
-            Index = Directory.GetDirectories(Index[PID] + "\\"); //如果存在，获取索引。
-            return Index; //返回外界
-        }
-        /// <summary>
         /// 获取文件索引目录。
         /// </summary>
         /// <param name="Path"></param>
@@ -215,7 +203,9 @@ namespace HawkEngine.IO
             Index = Directory.GetFiles(Index[PID] + "\\"); //如果存在，获取索引。
             return Index; //返回外界
         }
+        #endregion
 
+        #region MoveCopy
         /*********************** 移动与复制 ************************/
         /// <summary>
         /// 移动文件至目标路径，随后向外界告知文件是否被移动。
@@ -227,9 +217,9 @@ namespace HawkEngine.IO
         public bool MoveFile(string SourePath, string FileName, string ObjectPath)
         {
             /************ 移动文件 ************/
-            if (File.Exists(SourePath + FileName)) //如果文件存在，则删除。
+            if (System.IO.File.Exists(SourePath + FileName)) //如果文件存在，则删除。
             {
-                File.Move(SourePath + FileName, ObjectPath + FileName);
+                System.IO.File.Move(SourePath + FileName, ObjectPath + FileName);
                 return true;  //向外界返回 true。
             }
             else
@@ -248,9 +238,9 @@ namespace HawkEngine.IO
         public bool CopyFile(string SourePath, string FileName, string ObjectPath)
         {
             /************ 复制文件 ************/
-            if (File.Exists(SourePath + FileName)) //如果文件存在，则删除。
+            if (System.IO.File.Exists(SourePath + FileName)) //如果文件存在，则删除。
             {
-                File.Copy(SourePath + FileName, ObjectPath + FileName, true);
+                System.IO.File.Copy(SourePath + FileName, ObjectPath + FileName, true);
                 return true;  //向外界返回 true。
             }
             else
@@ -259,5 +249,7 @@ namespace HawkEngine.IO
             }
 
         }
+        #endregion
+
     }
 }

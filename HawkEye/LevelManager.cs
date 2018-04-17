@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Threading;
-using HawkEye.UserData;
-using HawkEngine.IO;
-using HawkEngine.Edit;
+﻿using HawkEngine.Edit;
+using HawkEngine.IO.File;
+using HawkEngine.IO.Text;
 using HawkEye.EvenManger;
+using System;
 
 namespace HawkEye.LevelManager
 {

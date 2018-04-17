@@ -1,5 +1,6 @@
 ﻿using HawkEngine.Edit;
-using HawkEngine.IO;
+using HawkEngine.IO.File;
+using HawkEngine.IO.Text;
 using HawkEye.UserData;
 using System;
 using System.Threading;
