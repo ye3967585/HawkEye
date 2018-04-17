@@ -5,10 +5,10 @@
  * 定制长度，色彩，填充物的进度条。
  *********************************************************************************************************/
 
-using HawkEngine.IO.Text;
+using HawkTools.IO.Text;
 using System;
 
-namespace HawkEngine.Edit
+namespace HawkTools.Edit
 {
     /// <summary>
     /// 进度条

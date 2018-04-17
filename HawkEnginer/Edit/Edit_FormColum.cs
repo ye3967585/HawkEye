@@ -5,10 +5,10 @@
  * =可以定制长度，色彩，表头，表列的表列窗体。
  *********************************************************************************************************/
 
-using HawkEngine.IO.Text;
+using HawkTools.IO.Text;
 using System;
 
-namespace HawkEngine.Edit
+namespace HawkTools.Edit
 {
     /// <summary>
     /// 表列窗体

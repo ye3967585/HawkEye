@@ -55,9 +55,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HawkEnginer\HawkEngine.csproj">
+    <ProjectReference Include="..\HawkEnginer\HawkTools.csproj">
       <Project>{e16b00ac-f42a-487f-be11-e292e0f377a6}</Project>
-      <Name>HawkEngine</Name>
+      <Name>HawkTools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,12 +4,12 @@
         <name>HawkEngine</name>
     </assembly>
     <members>
-        <member name="T:HawkEngine.Edit.FormColum">
+        <member name="T:HawkTools.Edit.FormColum">
             <summary>
             表列窗体
             </summary>
         </member>
-        <member name="M:HawkEngine.Edit.FormColum.ShowSimpleHollowFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor)">
+        <member name="M:HawkTools.Edit.FormColum.ShowSimpleHollowFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor)">
             <summary>
             无表头镂空窗体
             </summary>
@@ -18,7 +18,7 @@
             <param name="Speed">显示速度</param>
             <param name="color">颜色</param>
         </member>
-        <member name="M:HawkEngine.Edit.FormColum.ShowRichHollowFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:HawkTools.Edit.FormColum.ShowRichHollowFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             有表头镂空窗体
             </summary>
@@ -35,7 +35,7 @@
             <param name="H_8">表头8</param>
             <param name="color">颜色</param>
         </member>
-        <member name="M:HawkEngine.Edit.FormColum.ShowSimpleSolidFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor)">
+        <member name="M:HawkTools.Edit.FormColum.ShowSimpleSolidFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor)">
             <summary>
             无表头实心窗体
             P.S. Count.Length=Title.Length
@@ -46,7 +46,7 @@
             <param name="ForegroundColor">前景色</param>
             <param name="BackgroundColor">背景色</param>
         </member>
-        <member name="M:HawkEngine.Edit.FormColum.ShowRichSolidFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:HawkTools.Edit.FormColum.ShowRichSolidFormColumn(System.String,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             有表头实心窗体
             P.S. Count.Length=Title.Length
@@ -67,7 +67,7 @@
             <param name="H_7">表头7</param>
             <param name="H_8">表头8</param>
         </member>
-        <member name="M:HawkEngine.Edit.FormColum.ShowAdvanced_NoInfo_NoInput_Form(System.String,System.Int32,System.ConsoleColor,System.ConsoleColor)">
+        <member name="M:HawkTools.Edit.FormColum.ShowAdvanced_NoInfo_NoInput_Form(System.String,System.Int32,System.ConsoleColor,System.ConsoleColor)">
             <summary>
             高级固定无信息栏无输入窗体
             </summary>
@@ -76,19 +76,19 @@
             <param name="ForegroundColor"></param>
             <param name="BackgroundColor"></param>
         </member>
-        <member name="M:HawkEngine.Edit.FormColum.Get_Set_WH(System.Int32)">
+        <member name="M:HawkTools.Edit.FormColum.Get_Set_WH(System.Int32)">
             <summary>
             将光标设定在窗体正中央，并且返回最大行数
             </summary>
             <param name="Top">顶端坐标</param>
             <returns></returns>
         </member>
-        <member name="T:HawkEngine.Edit.ProgressBar">
+        <member name="T:HawkTools.Edit.ProgressBar">
             <summary>
             进度条
             </summary>
         </member>
-        <member name="M:HawkEngine.Edit.ProgressBar.ShowProgressBar(System.Int32,System.Int32,System.ConsoleColor,System.Boolean,System.String,System.ConsoleColor)">
+        <member name="M:HawkTools.Edit.ProgressBar.ShowProgressBar(System.Int32,System.Int32,System.ConsoleColor,System.Boolean,System.String,System.ConsoleColor)">
             <summary>
             绘制进度条
             </summary>
@@ -99,12 +99,12 @@
             <param name="Draw">填充图形样式</param>
             <param name="ForegroundColor">填充图形颜色</param>
         </member>
-        <member name="T:HawkEngine.IO.Data.DATA">
+        <member name="T:HawkTools.IO.Data.DATA">
             <summary>
             对于即时数据的处理
             </summary>
         </member>
-        <member name="M:HawkEngine.IO.Data.DATA.CutString(System.String,System.Int32)">
+        <member name="M:HawkTools.IO.Data.DATA.CutString(System.String,System.Int32)">
             <summary>
             以空格符为界，删除其左边的所有字符，包空格符本身。
             </summary>
@@ -112,19 +112,19 @@
             <param name="CutLenth">删除长度</param>
             <returns>处理后的字符串</returns>
         </member>
-        <member name="T:HawkEngine.IO.File.FILE">
+        <member name="T:HawkTools.IO.File.FILE">
             <summary>
             文件的操作与管理。
             </summary>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.CreateDir(System.String,System.String)">
+        <member name="M:HawkTools.IO.File.FILE.CreateDir(System.String,System.String)">
             <summary>
             根据输入名称创建新的路径，如果已经存在相同的路径，则会自动覆盖
             </summary>
             <param name="Path">路径</param>
             <param name="Name">名称</param>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.CreateTextData(System.String,System.String,System.String)">
+        <member name="M:HawkTools.IO.File.FILE.CreateTextData(System.String,System.String,System.String)">
             <summary>
             创建文本文件,并输出到指定路径,如果文件已经存在，则会自动覆盖。
             </summary>
@@ -132,7 +132,7 @@
             <param name="Path">路径</param>
             <param name="FileName">文件名</param>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.CreateObjectData(System.Object,System.String,System.String)">
+        <member name="M:HawkTools.IO.File.FILE.CreateObjectData(System.Object,System.String,System.String)">
             <summary>
             创建能保存对象实例数据的加密文件,并输出到指定路径,如果文件已经存在，则会自动覆盖。
             </summary>
@@ -140,21 +140,21 @@
             <param name="Path">路径</param>
             <param name="FileName">文件名</param>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.DelDir(System.String,System.String)">
+        <member name="M:HawkTools.IO.File.FILE.DelDir(System.String,System.String)">
             <summary>
             删除路径，包含此路径下的所有文件。
             </summary>
             <param name="Path">路径</param>
             <param name="Name">名称</param>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.DelFile(System.String,System.String)">
+        <member name="M:HawkTools.IO.File.FILE.DelFile(System.String,System.String)">
             <summary>
             删除文件，随后向外界告知文件是否被删除。
             </summary>
             <param name="Path">文件名</param>
             <param name="FileName">路径</param>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.GetTextData(System.String,System.String)">
+        <member name="M:HawkTools.IO.File.FILE.GetTextData(System.String,System.String)">
             <summary>
             获取文本文件中的文本。
             </summary>
@@ -162,7 +162,7 @@
             <param name="FileName">文件名</param>
             <returns>文件内容</returns>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.GetTextDataIndexPID(System.String[],System.Int32,System.String)">
+        <member name="M:HawkTools.IO.File.FILE.GetTextDataIndexPID(System.String[],System.Int32,System.String)">
             <summary>
             通过索引号获取文本文件中的文本。
             </summary>
@@ -171,7 +171,7 @@
             <param name="PID"></param>
             <returns>指定文本</returns>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.GetObjectData(System.String,System.String)">
+        <member name="M:HawkTools.IO.File.FILE.GetObjectData(System.String,System.String)">
             <summary>
             获取保存对象数据文件中的对象。
             </summary>
@@ -179,21 +179,21 @@
             <param name="FileName">文件名</param>
             <returns>文件内容</returns>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.GetDirIndex(System.String)">
+        <member name="M:HawkTools.IO.File.FILE.GetDirIndex(System.String)">
             <summary>
             获取路径索引目录。
             </summary>
             <param name="Path">路径</param>
             <returns>文件索引目录表</returns>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.GetFileIndex(System.String)">
+        <member name="M:HawkTools.IO.File.FILE.GetFileIndex(System.String)">
             <summary>
             获取文件索引目录。
             </summary>
             <param name="Path"></param>
             <returns>文件索引目录表</returns>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.GetFileIndexPID(System.String[],System.Int32)">
+        <member name="M:HawkTools.IO.File.FILE.GetFileIndexPID(System.String[],System.Int32)">
             <summary>
             通过索引号获取文件。
             </summary>
@@ -201,7 +201,7 @@
             <param name="PID"></param>
             <returns>文件索引目录表</returns>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.MoveFile(System.String,System.String,System.String)">
+        <member name="M:HawkTools.IO.File.FILE.MoveFile(System.String,System.String,System.String)">
             <summary>
             移动文件至目标路径，随后向外界告知文件是否被移动。
             </summary>
@@ -210,7 +210,7 @@
             <param name="ObjectPath">目标路径</param>
             <returns></returns>
         </member>
-        <member name="M:HawkEngine.IO.File.FILE.CopyFile(System.String,System.String,System.String)">
+        <member name="M:HawkTools.IO.File.FILE.CopyFile(System.String,System.String,System.String)">
             <summary>
             复制文件副本至指定路径，如果目标路径下文件已经存在，则会自动覆盖，随后向外界告知文件是否被复制。
             </summary>
@@ -219,17 +219,17 @@
             <param name="ObjectPath">目标路径</param>
             <returns></returns>
         </member>
-        <member name="T:HawkEngine.IO.Graphical.GRAPHICAL">
+        <member name="T:HawkTools.IO.Graphical.GRAPHICAL">
             <summary>
             图形控制
             </summary>
         </member>
-        <member name="T:HawkEngine.IO.Text.TEXT">
+        <member name="T:HawkTools.IO.Text.TEXT">
             <summary>
             向视图中输出各种形式的字符或字符串
             </summary>
         </member>
-        <member name="M:HawkEngine.IO.Text.TEXT.OutPutText(System.String,System.Int32,System.Boolean,System.Int32)">
+        <member name="M:HawkTools.IO.Text.TEXT.OutPutText(System.String,System.Int32,System.Boolean,System.Int32)">
             <summary>
             输出普通文本
             </summary>
@@ -238,7 +238,7 @@
             <param name="isLinefeed">是否自动换行（必须与换行控制一同设定）</param>
             <param name="LineControl">换行控制（必须与否自动换行制一同设定）</param>
         </member>
-        <member name="M:HawkEngine.IO.Text.TEXT.OutPutColorText(System.String,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Boolean,System.Int32)">
+        <member name="M:HawkTools.IO.Text.TEXT.OutPutColorText(System.String,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Boolean,System.Int32)">
             <summary>
             输出有色文本
             </summary>
@@ -249,14 +249,14 @@
             <param name="isLinefeed">是否自动换行（必须与换行控制一同设定）</param>
             <param name="LineControl">换行控制（必须与否自动换行制一同设定）</param>
         </member>
-        <member name="M:HawkEngine.IO.Text.TEXT.OutPutTextFromFiles(System.String,System.Int32)">
+        <member name="M:HawkTools.IO.Text.TEXT.OutPutTextFromFiles(System.String,System.Int32)">
             <summary>
             来自文件的普通文本输出
             </summary>
             <param name="Path">文本文件的路径</param>
             <param name="OutSpeed">输出速度</param>
         </member>
-        <member name="M:HawkEngine.IO.Text.TEXT.OutPutColorTextFromFiles(System.String,System.ConsoleColor,System.ConsoleColor,System.Int32)">
+        <member name="M:HawkTools.IO.Text.TEXT.OutPutColorTextFromFiles(System.String,System.ConsoleColor,System.ConsoleColor,System.Int32)">
             <summary>
             来自文件的有色文本输出
             </summary>

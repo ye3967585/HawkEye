@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HawkEngine", "HawkEnginer\HawkEngine.csproj", "{E16B00AC-F42A-487F-BE11-E292E0F377A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HawkTools", "HawkEnginer\HawkTools.csproj", "{E16B00AC-F42A-487F-BE11-E292E0F377A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HawkEye", "HawkEye\HawkEye.csproj", "{40CE7653-F4C6-4E24-BDFE-77A9A3F58ABF}"
 EndProject

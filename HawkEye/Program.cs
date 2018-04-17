@@ -1,6 +1,6 @@
-﻿using HawkEngine.Edit;
-using HawkEngine.IO.Data;
-using HawkEngine.IO.File;
+﻿using HawkTools.Edit;
+using HawkTools.IO.Data;
+using HawkTools.IO.File;
 using HawkEye.HEDS.Dos;
 using HawkEye.HEDS.Files;
 using HawkEye.LevelManager;

@@ -6,13 +6,13 @@
  * 简单明瞭的的解决方案。
  *********************************************************************************************************/
 
-using HawkEngine.IO.Text;
+using HawkTools.IO.Text;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 
-namespace HawkEngine.IO.File
+namespace HawkTools.IO.File
 {
     /// <summary>
     /// 文件的操作与管理。

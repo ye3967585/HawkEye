@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HawkEngine.IO.Data
+namespace HawkTools.IO.Data
 {
     /// <summary>
     /// 对于即时数据的处理

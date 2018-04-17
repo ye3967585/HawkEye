@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("HawkEngine")]
+[assembly: AssemblyTitle("HawkTools")]
 [assembly: AssemblyDescription("用于开发控制台文字游戏的简单工具组")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ChihHuCheYeh Games Inc.")]
-[assembly: AssemblyProduct("HawkEngine")]
+[assembly: AssemblyProduct("HawkTools")]
 [assembly: AssemblyCopyright("Copyright © ChihHuCheYeh Games Inc. 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -1,7 +1,7 @@
-﻿using HawkEngine.Edit;
-using HawkEngine.IO.Data;
-using HawkEngine.IO.File;
-using HawkEngine.IO.Text;
+﻿using HawkTools.Edit;
+using HawkTools.IO.Data;
+using HawkTools.IO.File;
+using HawkTools.IO.Text;
 using HawkEye.UserData;
 using System;
 using System.IO;
