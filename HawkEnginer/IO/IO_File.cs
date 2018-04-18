@@ -20,7 +20,16 @@ namespace HawkTools.IO.File
     public class FILE
     {
         DirectoryInfo dir;
-        TEXT text = new TEXT();
+        TEXT text;
+
+
+        public FILE()
+        {
+            text = new TEXT();
+        }
+
+
+
 
         #region AddDelete
         /*********************** 添加与删除 ************************/

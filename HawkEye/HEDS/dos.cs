@@ -4,6 +4,7 @@ using HawkTools.Edit;
 using HawkTools.IO.Data;
 using HawkTools.IO.File;
 using HawkTools.IO.Text;
+using HawkTools.IO.Graphical;
 using System;
 using System.IO;
 using System.Threading;
@@ -18,11 +19,12 @@ namespace HawkEye.HEDS.Dos
         int ERROR;                                                                  //错误计数
         bool BreakThis = false;                                                     //是否跳出输入循环
 
-        TEXT text = new TEXT();                                                     //文字输出    
-        FILE file = new FILE();                                                     //文件
-        DATA data = new DATA();                                                     //数据处理
-        FormColum formColum = new FormColum();                                      //表列窗体
-        PlayerData playerData = new PlayerData();                                   //玩家数据
+        TEXT text;                                                                  //文字输出    
+        FILE file;                                                                  //文件
+        DATA data;                                                                  //数据处理
+        FormColum formColum;                                                        //表列窗体
+        GRAPHICAL graphical;
+        PlayerData playerData;                                                      //玩家数据
         FileSystem fileSystem;
         string PlayDataPath = @"Game\Save\";                                        //存档路径                                       
         string QuickLoad = File.ReadAllText(@"Game\Save\QuickLoadData.hawksav");    //玩家名
@@ -30,6 +32,12 @@ namespace HawkEye.HEDS.Dos
         public DosSystem()
         {
             ERROR = 0;
+            text = new TEXT();
+            file = new FILE();
+            data = new DATA();
+            formColum = new FormColum();
+            graphical = new GRAPHICAL();
+            playerData = new PlayerData();
         }
 
         /// <summary>
@@ -37,40 +45,26 @@ namespace HawkEye.HEDS.Dos
         /// </summary>
         public void StartingSystem()
         {
-            Text = File.ReadAllText("Game\\Text\\heds - 副本.txt");
-            Console.ForegroundColor = ConsoleColor.Green;
-            for (int i = 0; i < Text.Length; i++)
-            {
-                Console.ForegroundColor = ConsoleColor.Black;
-                Thread.Sleep(2);
-                //Thread.Sleep(2);
-                if (Text[i]== '#')
-                {
-                    Console.BackgroundColor = ConsoleColor.Black;
-                }
-                if(Text[i]== ' '&& Text[i]!='\t')
-                {
-                    Console.BackgroundColor = ConsoleColor.Blue;
-                }
-                Console.Write(Text[i]);
-            }
+            Text = "Game\\Text\\heds.txt";
+            graphical.DrawGraphicsFormFiles(Text, ConsoleColor.Green);
             Thread.Sleep(1000);
             Console.WriteLine();
             Console.Write("\t");
-            //text.OutPutColorText(" Version 1.0.5 Realse CopyRight Hawk Eye 1985-1994\t", ConsoleColor.Black, ConsoleColor.Green, 15);
-            Thread.Sleep(1000000);
+            text.OutPutColorText(" Version 1.0.5 Realse CopyRight Hawk Eye 1985-1994\t", ConsoleColor.Black, ConsoleColor.Green, 15);
+            Thread.Sleep(2000);
+            Console.Clear();
         }
 
         #region 命令行视口
         public void Command()
         {
-            StartingSystem();
+            //StartingSystem();
             Console.WriteLine();
             formColum.ShowSimpleSolidFormColumn("SYSTEM COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n");
-            GetInfo("info"); // 显示基本的信息
-            GetInfo("user"); // 显示基本的信息
+            GetInfo("info");                                // 显示基本的信息
+            GetInfo("user");                                // 显示基本的信息
             /*
              * 命令的判断思路：
              * 如果用户输入的命令（主命令代码）为命名列表中的一部分
@@ -81,7 +75,7 @@ namespace HawkEye.HEDS.Dos
             {
                 ERROR = Tips(ERROR);
                 Console.ForegroundColor = ConsoleColor.Green;
-                NowLine = Console.CursorTop;  //移动光标至第二行，防止覆盖标题
+                NowLine = Console.CursorTop;                //移动光标至第二行，防止覆盖标题
                 Console.Write("  {0}\\SYSTEM>", playerData.Name);
                 Input = Console.ReadLine();
                 if (Input == "cls")
@@ -93,10 +87,10 @@ namespace HawkEye.HEDS.Dos
                 }
 
                 #region Info
-                else if (Input.Contains("info"))  //如果包含info，进入子判断语句
+                else if (Input.Contains("info"))           //如果包含info，进入子判断语句
                 {
-                    Input = data.CutString(Input, 4); //裁字符串，只剩下参数值
-                    GetInfo(Input); //输入参数值
+                    Input = data.CutString(Input, 4);       //裁字符串，只剩下参数值
+                    GetInfo(Input);                         //输入参数值
                 }
                 #endregion
                 else if (Input.Contains("disk"))
@@ -117,7 +111,6 @@ namespace HawkEye.HEDS.Dos
                 else
                 {
                     ERROR++;
-
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("  ERROR: 未知的命令 {0}", Input);
                     Console.ForegroundColor = ConsoleColor.Green;

@@ -24,12 +24,12 @@ namespace HawkEye.HEDS.Files
         string C = "HEDS\\disk\\C\\";                                               //C
         string E = "HEDS\\disk\\E\\";                                               //E
         string F = "HEDS\\disk\\E\\";                                               //F
-        DiskInfo diskinfo;                                       //磁盘信息对象
+        DiskInfo diskinfo;                                                          //磁盘信息对象
         FormColum formColum;
         DiskState diskState;
-        TEXT text = new TEXT();
-        FILE file = new FILE();
-        DATA data = new DATA();
+        TEXT text;
+        FILE file;
+        DATA data;
 
         /// <summary>
         /// 初始化数据
@@ -37,6 +37,9 @@ namespace HawkEye.HEDS.Files
         /// <param name="Name">玩家名 以便寻找文件</param>
         public FileSystem(string Name)
         {
+            text = new TEXT();
+            file = new FILE();
+            data = new DATA();
             diskState = DiskState.OUT;
             diskinfo = new DiskInfo();
             formColum = new FormColum();

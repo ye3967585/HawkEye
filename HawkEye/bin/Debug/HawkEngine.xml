@@ -224,6 +224,22 @@
             图形输出
             </summary>
         </member>
+        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.DrawGraphics(System.Char[],System.ConsoleColor,System.Int32)">
+            <summary>
+            绘制一副图形
+            </summary>
+            <param name="Source">文件图形数据</param>
+            <param name="Color">色</param>
+            <param name="Speed">输出速度</param>
+        </member>
+        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.DrawGraphicsFormFiles(System.String,System.ConsoleColor,System.Int32)">
+            <summary>
+            绘制一副图形，来自于数据文件
+            </summary>
+            <param name="File">文件图形数据</param>
+            <param name="Color">前景色</param>
+            <param name="Speed">输出速度</param>
+        </member>
         <member name="T:HawkTools.IO.Text.TEXT">
             <summary>
             向视图中输出各种形式的字符或字符串
