@@ -113,9 +113,7 @@ namespace HawkTools.IO.File
             /************ 创建文件读取流 ************/
             if (System.IO.File.Exists(Path + FileName))
             {
-                StreamReader TextData = new StreamReader(Path + FileName);
-                string Text = TextData.ReadLine();  //获取文本文件内容
-                TextData.Close();
+                string Text = System.IO.File.ReadAllText(Path + FileName);  //获取文本文件内容
                 return Text;  //向外界返回
             }
             else
@@ -162,7 +160,7 @@ namespace HawkTools.IO.File
         public string[] GetDirIndex(string Path)
         {
             string[] Index;  //用于接收索引的字符串数组
-            if (Directory.Exists(Path+"\\")) //判断路径是否存在
+            if (Directory.Exists(Path + "\\")) //判断路径是否存在
             {
                 Index = Directory.GetDirectories(Path); //如果存在，获取索引。
                 return Index; //返回外界

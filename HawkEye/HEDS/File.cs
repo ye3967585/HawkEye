@@ -12,8 +12,9 @@ namespace HawkEye.HEDS.Files
     /// <summary>
     /// 当前所在的盘符
     /// </summary>
-    enum DiskState{
-        C,E,F,OUT
+    enum DiskState
+    {
+        C, E, F, OUT
     }
     public class FileSystem
     {
@@ -46,53 +47,61 @@ namespace HawkEye.HEDS.Files
         string Name = File.ReadAllText("Game\\Save\\QuickLoadData.hawksav");        //获取玩家名
         public void Command()
         {
-            diskState = DiskState.OUT;;
+            diskState = DiskState.OUT; ;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine();
             GetDiskView();
             while (true)
             {
-                Console.Write("  {0}>File>{1}>",Name,diskState);
+                Console.Write("  {0}>SYSTEM\\DISK\\{1}>", Name, diskState);
                 Input = Console.ReadLine();
-                if (Input == "cls"&&Input.Length==3)
+                if (Input.Contains("cd"))
                 {
-                    Console.Clear();
-                    formColum.ShowSimpleSolidFormColumn("DISK", 80, 0, ConsoleColor.Black, ConsoleColor.Green); //+1
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine();
+                    Input = data.CutString(Input, 2);
+                    GoDiskInfo(Input.ToUpper());
                 }
-                //进入指定盘符
-                else if(Input.Contains("c")|| Input.Contains("e") || Input.Contains("f") || Input.Contains("C") || Input.Contains("E") || Input.Contains("F"))
+                else if (Input.Contains("open"))
                 {
-                    if (Input == "c"|| Input == "C")
-                    {
-                        GoDiskInfo("C");
-                    }
-                    else if (Input == "e" || Input == "E")
-                    {
-                        GoDiskInfo("E");
-                    }
-                    else if (Input == "f" || Input == "F")
-                    {
-                        GoDiskInfo("F");
-                    }
+                    Input = data.CutString(Input, 4);
+                    OpenFile(diskState, Input);
                 }
                 else if (Input.Contains("list"))
                 {
-                    ListIndex(diskState, Input);
+                    if (diskState != DiskState.OUT)
+                    {
+                        ListIndex(diskState, Input);
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  ERROR: 你尚未进入任何盘符内", Input);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+
                 }
-                else if(Input.Length==0)
+                else if (Input.Contains("break"))
                 {
-                    Console.WriteLine("  空指令");
+                    if (diskState != DiskState.OUT)
+                    {
+                        diskState = DiskState.OUT;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    
                 }
-                else if (Input.Length > 0)
+                else if (Input == "help")
                 {
-                    OpenFile(diskState, Input);
-                }          
+                    text.OutPutTextFromFiles("Game\\Text\\Help\\file.txt", 1);
+                }
+                else if (Input == "exit")
+                {
+                    break;
+                }
             }
         }
-
-
+        #region 适用于本模块的私有方法集
         /// <summary>
         /// 获取磁盘目录视图
         /// </summary>
@@ -102,13 +111,13 @@ namespace HawkEye.HEDS.Files
             diskinfo.DISK_E = 12;
             diskinfo.DISK_F = 35;
             //图示
-            Console.Write("\n  占用比 [ C / D / E ]\n\n");
-            GetState(diskinfo.DISK_C); 
+            Console.Write("\n  占用比 [ C / D / E ]\n\n  ");
+            GetState(diskinfo.DISK_C);
             GetState(diskinfo.DISK_E);
             GetState(diskinfo.DISK_F);
             Console.WriteLine("\n");
             //文字数据
-            Console.WriteLine("  C:\t{0}/128\n  E:\t{1}/128\n  F:\t{2}/64\n", diskinfo.DISK_C,diskinfo.DISK_E,diskinfo.DISK_F);
+            Console.WriteLine("  C:\t{0}/128\n  E:\t{1}/128\n  F:\t{2}/64\n", diskinfo.DISK_C, diskinfo.DISK_E, diskinfo.DISK_F);
         }
         /// <summary>
         /// 获取磁盘状态
@@ -120,9 +129,9 @@ namespace HawkEye.HEDS.Files
             {
                 Console.BackgroundColor = ConsoleColor.Yellow;
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("  {0}        ",Size);
+                Console.Write("  {0}        ", Size);
             }
-            else if (Size < 30&&Size>0)
+            else if (Size < 30 && Size > 0)
             {
                 Console.BackgroundColor = ConsoleColor.Red;
                 Console.ForegroundColor = ConsoleColor.Black;
@@ -140,11 +149,10 @@ namespace HawkEye.HEDS.Files
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.Write("  {0}               ", Size);
             }
-            
+
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
         }
-
         /// <summary>
         /// 前往盘符
         /// </summary>
@@ -153,46 +161,54 @@ namespace HawkEye.HEDS.Files
         {
             //状态判断
             //例如，状态为C，那么，打开文件则只打开C目录下的，以此类推。
-            if (Disk == "C") { diskState = DiskState.C; }else if (Disk == "E") { diskState = DiskState.E; }else if (Disk == "F") { diskState = DiskState.F; }
+            if (Disk == "C") { diskState = DiskState.C; } else if (Disk == "E") { diskState = DiskState.E; } else if (Disk == "F") { diskState = DiskState.F; }
         }
-
         /// <summary>
         /// 根据盘符列出文件或文件夹
         /// </summary>
         /// <param name="state"></param>
-        void ListIndex(DiskState state,string Input)
+        void ListIndex(DiskState state, string Input)
         {
 
-            if (Input.Contains("list")&&diskState!=DiskState.OUT)
+            if (Input.Contains("list") && diskState != DiskState.OUT)
             {
                 Console.WriteLine("\n  Date\t\tTime\t\tName");
                 string[] Index = file.GetFileIndex(PlayDataPath + Name + @"\" + RootPath + diskState + "\\");
                 for (int i = 0; i < Index.Length; i++)
                 {
                     Thread.Sleep(30);
-                    Console.WriteLine("  "+File.GetCreationTime(Index[i]).AddYears(-30).ToString("yyyy.M.d") + "\t" + File.GetCreationTime(Index[i]).ToString("HH:mm:ss") + "\t" + Index[i].Substring(27));
+                    Console.WriteLine("  " + File.GetCreationTime(Index[i]).AddYears(-30).ToString("yyyy.M.d") + "\t" + File.GetCreationTime(Index[i]).ToString("HH:mm:ss") + "\t" + Index[i].Substring(27));
                 }
                 Console.WriteLine();
             }
-            else if(diskState == DiskState.OUT)
+            else if (diskState == DiskState.OUT)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("  ERROR: 你尚未进入任何盘符", Input);
                 Console.ForegroundColor = ConsoleColor.Green;
             }
         }
-
         /// <summary>
         /// 根据所在盘符搜寻并打开文件
         /// </summary>
-        /// <param name="disk">所在盘符</param>
+        /// <param name="state">所在盘符</param>
         /// <param name="FileName">文件名</param>
-        void OpenFile(DiskState disk,string FileName)
+        void OpenFile(DiskState state, string FileName)
         {
-            string Path = "Game\\Save\\"+Name+"\\HEDS\\disk\\" + disk.ToString().ToLower()+"\\";
+            string Path = "Game\\Save\\" + Name.ToUpper() + "\\HEDS\\disk\\" + state.ToString().ToUpper() + "\\";
             string conect = file.GetTextData(Path, FileName);
-            Console.WriteLine(conect);
+            if (conect != null)
+            {
+                Console.WriteLine(conect);
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  ERROR: 不存在的文件 {0}", Input);
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
 
         }
+        #endregion
     }
 }

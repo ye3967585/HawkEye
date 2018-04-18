@@ -1,13 +1,12 @@
-﻿using HawkTools.Edit;
+﻿using HawkEye.HEDS.Files;
+using HawkEye.UserData;
+using HawkTools.Edit;
 using HawkTools.IO.Data;
 using HawkTools.IO.File;
 using HawkTools.IO.Text;
-using HawkEye.UserData;
 using System;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Threading;
-using HawkEye.HEDS.Files;
 
 namespace HawkEye.HEDS.Dos
 {
@@ -38,28 +37,39 @@ namespace HawkEye.HEDS.Dos
         /// </summary>
         public void StartingSystem()
         {
-            Text = File.ReadAllText("Game\\Text\\heds.txt");
+            Text = File.ReadAllText("Game\\Text\\heds - 副本.txt");
             Console.ForegroundColor = ConsoleColor.Green;
             for (int i = 0; i < Text.Length; i++)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(Text[i]);
+                Console.ForegroundColor = ConsoleColor.Black;
                 Thread.Sleep(2);
+                //Thread.Sleep(2);
+                if (Text[i]== '#')
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }
+                if(Text[i]== ' '&& Text[i]!='\t')
+                {
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                }
+                Console.Write(Text[i]);
             }
-            Thread.Sleep(100);
+            Thread.Sleep(1000);
             Console.WriteLine();
-            Console.Write("     ");
-            text.OutPutColorText(" Version 1.0.5 Realse CopyRight Hawk Eye 1985-1994\t\t", ConsoleColor.Black, ConsoleColor.Green, 15);
-
+            Console.Write("\t");
+            //text.OutPutColorText(" Version 1.0.5 Realse CopyRight Hawk Eye 1985-1994\t", ConsoleColor.Black, ConsoleColor.Green, 15);
+            Thread.Sleep(1000000);
         }
 
         #region 命令行视口
         public void Command()
         {
+            StartingSystem();
             Console.WriteLine();
             formColum.ShowSimpleSolidFormColumn("SYSTEM COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n");
+            GetInfo("info"); // 显示基本的信息
             GetInfo("user"); // 显示基本的信息
             /*
              * 命令的判断思路：
@@ -72,7 +82,7 @@ namespace HawkEye.HEDS.Dos
                 ERROR = Tips(ERROR);
                 Console.ForegroundColor = ConsoleColor.Green;
                 NowLine = Console.CursorTop;  //移动光标至第二行，防止覆盖标题
-                Console.Write("  {0}>", playerData.Name);
+                Console.Write("  {0}\\SYSTEM>", playerData.Name);
                 Input = Console.ReadLine();
                 if (Input == "cls")
                 {
@@ -128,7 +138,7 @@ namespace HawkEye.HEDS.Dos
             //如果没有裁剪，那么肯定就是无参指令，否则就执行相应的参数
             if (Input.Contains("info"))
             {
-                Console.Write("  系统信息 : (C)1988-1997 Hawk Eye Dos System V 1.5.1\n");
+                Console.Write("  (C)1988-1997 Hawk Eye Dos System V 1.5.1\n");
             }
             else if (Input.Contains("user"))
             {

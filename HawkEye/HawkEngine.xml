@@ -221,7 +221,7 @@
         </member>
         <member name="T:HawkTools.IO.Graphical.GRAPHICAL">
             <summary>
-            图形控制
+            图形输出
             </summary>
         </member>
         <member name="T:HawkTools.IO.Text.TEXT">
