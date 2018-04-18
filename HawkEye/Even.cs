@@ -37,14 +37,14 @@ namespace HawkEye.EvenManger
                 text.OutPutText("\n\n\n   用户名 : ", 15);
                 UserName = Console.ReadLine();
                 //判断用户名长度是否符合规则，防止空的用户名出现
-                if (UserName.Length > 0&&UserName.Length<=4)
+                if (UserName.Length > 0&&UserName.Length==4)
                 {
                     playerData.Name = UserName;
                     break;
                 }
                 else
                 {
-                    text.OutPutColorText("\n   error> 用户名长度太短，长度应在0-4个字符以内或\t\t\t\t\t", ConsoleColor.White, ConsoleColor.Red, 15, true);
+                    text.OutPutColorText("\n   error> 用户名长度非法，长度应在4个字符.\t\t\t\t\t", ConsoleColor.White, ConsoleColor.Red, 15, true);
                     Thread.Sleep(3000);
                 }
             }

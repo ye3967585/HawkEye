@@ -7,42 +7,49 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
+using HawkEye.HEDS.Files;
 
 namespace HawkEye.HEDS.Dos
 {
     class DosSystem
     {
-        string Name;              //玩家名
-        string SystemText;
-        string Input;
-        int NowLine;             //光标1的行位置
-        int MaxLine;
-        bool BreakThis = false; //是否跳出输入循环
-        TEXT text = new TEXT();
-        FILE file = new FILE();
-        DATA data = new DATA();
-        FormColum formColum = new FormColum();
-        PlayerData playerData = new PlayerData();
+        string Text;
+        string Input;                                                               //输入
+        int NowLine;                                                                //光标1的行位置
+        int ERROR;                                                                  //错误计数
+        bool BreakThis = false;                                                     //是否跳出输入循环
 
-        string HelpPath = "Game\\Text\\Help\\help.txt";
-        string PlayDataPath = "Game\\Save\\";
+        TEXT text = new TEXT();                                                     //文字输出    
+        FILE file = new FILE();                                                     //文件
+        DATA data = new DATA();                                                     //数据处理
+        FormColum formColum = new FormColum();                                      //表列窗体
+        PlayerData playerData = new PlayerData();                                   //玩家数据
+        FileSystem fileSystem;
+        string PlayDataPath = @"Game\Save\";                                        //存档路径                                       
+        string QuickLoad = File.ReadAllText(@"Game\Save\QuickLoadData.hawksav");    //玩家名
+
+        public DosSystem()
+        {
+            ERROR = 0;
+        }
+
         /// <summary>
         /// 开机动画
         /// </summary>
         public void StartingSystem()
         {
-            SystemText = File.ReadAllText("Game\\Text\\heds.txt");
+            Text = File.ReadAllText("Game\\Text\\heds.txt");
             Console.ForegroundColor = ConsoleColor.Green;
-            for (int i = 0; i < SystemText.Length; i++)
+            for (int i = 0; i < Text.Length; i++)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(SystemText[i]);
+                Console.Write(Text[i]);
                 Thread.Sleep(2);
             }
             Thread.Sleep(100);
             Console.WriteLine();
             Console.Write("     ");
-            text.OutPutColorText(" Version 1.0.5 Realse CopyRight Hawk Eye 1985-1994          \n", ConsoleColor.Black, ConsoleColor.Green, 15);
+            text.OutPutColorText(" Version 1.0.5 Realse CopyRight Hawk Eye 1985-1994\t\t", ConsoleColor.Black, ConsoleColor.Green, 15);
 
         }
 
@@ -62,13 +69,15 @@ namespace HawkEye.HEDS.Dos
              */
             while (!BreakThis)
             {
+                ERROR = Tips(ERROR);
                 Console.ForegroundColor = ConsoleColor.Green;
                 NowLine = Console.CursorTop;  //移动光标至第二行，防止覆盖标题
-                Console.Write("\n  User>");
+                Console.Write("  {0}>", playerData.Name);
                 Input = Console.ReadLine();
                 if (Input == "cls")
                 {
                     Console.Clear();
+                    Console.WriteLine();
                     formColum.ShowSimpleSolidFormColumn("SYSTEM COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green);
                     Console.WriteLine("\n");
                 }
@@ -80,7 +89,11 @@ namespace HawkEye.HEDS.Dos
                     GetInfo(Input); //输入参数值
                 }
                 #endregion
-
+                else if (Input.Contains("disk"))
+                {
+                    fileSystem = new FileSystem(playerData.Name);
+                    fileSystem.Command();
+                }
                 #region Help
                 else if (Input.Contains("help"))
                 {
@@ -93,8 +106,10 @@ namespace HawkEye.HEDS.Dos
                 else if (Input.Length < 1) ;
                 else
                 {
+                    ERROR++;
+
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("  >未知的命令 {0}", Input);
+                    Console.WriteLine("  ERROR: 未知的命令 {0}", Input);
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
             }
@@ -102,14 +117,14 @@ namespace HawkEye.HEDS.Dos
         #endregion
 
         #region 适用于本模块的私有方法集
-        #region --UI
-        
+
         /// <summary>
         /// 获取信息
         /// </summary>
         /// <param name="Input">输入</param>
-        void GetInfo(string Input=null)
+        void GetInfo(string Input = null)
         {
+            playerData = (PlayerData)file.GetObjectData(PlayDataPath + QuickLoad + @"\", "Gamesave_" + QuickLoad + ".hawksav");
             //如果没有裁剪，那么肯定就是无参指令，否则就执行相应的参数
             if (Input.Contains("info"))
             {
@@ -117,33 +132,65 @@ namespace HawkEye.HEDS.Dos
             }
             else if (Input.Contains("user"))
             {
-                Console.Write("  系统信息 : (C)1988-1997 Hawk Eye Dos System V 1.5.1\n");
-                Console.Write("  用户名 : {0} \\" + " IP : {1} \\ " + " 等级L : {2}-{3}\n\n", playerData.Name, playerData.IP, playerData.Level, playerData.LevelName);
+                Console.Write("  用户名 :\t{0}\n" + "  IP :\t\t{1}\n" + "  等级 :\t{2}-{3}\n\n", playerData.Name, playerData.IP, playerData.Level, playerData.LevelName);
             }
-            
+            else
+            {
+                ERROR++;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  ERROR: {0} 是 info 命令中未知的参数", Input);
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+
         }
 
+        /// <summary>
+        /// 用户帮助
+        /// </summary>
+        /// <param name="Input"></param>
         void Help(string Input)
         {
             //如果没有裁剪，那么肯定就是无参指令，否则就执行相应的参数
             if (Input.Contains("help"))
             {
                 text.OutPutTextFromFiles("Game\\Text\\Help\\help.txt", 1);
-            }else if (Input.Contains("file"))
+            }
+            else if (Input.Contains("file"))
             {
                 text.OutPutTextFromFiles("Game\\Text\\Help\\file.txt", 1);
-            }else if (Input.Contains("mail"))
+            }
+            else if (Input.Contains("mail"))
             {
                 text.OutPutTextFromFiles("Game\\Text\\Help\\mail.txt", 1);
             }
             else
             {
+                ERROR++;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("  >{0} 是 help 命令中未知的参数", Input);
+                Console.WriteLine("  ERROR: {0} 是 help 命令中未知的参数", Input);
                 Console.ForegroundColor = ConsoleColor.Green;
             }
         }
+
+        /// <summary>
+        /// 提示
+        /// </summary>
+        /// <param name="ERROR"></param>
+        /// <returns></returns>
+        int Tips(int ERROR)
+        {
+            if (ERROR > 5)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("  TIPS: 遇到困难？请输入命令 help 查阅相关帮助", Input);
+                Console.ForegroundColor = ConsoleColor.Green;
+                ERROR = 0;
+            }
+            return ERROR;
+        }
         #endregion
-        #endregion
+
+
+
     }
 }

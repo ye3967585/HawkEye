@@ -4,6 +4,7 @@ using HawkTools.IO.File;
 using HawkTools.IO.Text;
 using HawkEye.UserData;
 using System;
+using System.Threading;
 using System.IO;
 
 namespace HawkEye.HEDS.Files
@@ -14,37 +15,50 @@ namespace HawkEye.HEDS.Files
     enum DiskState{
         C,E,F,OUT
     }
-    class FileSystem
+    public class FileSystem
     {
-        string PlayDataPath = "Game\\Save\\";  //玩家信息路径
-        string DiskInfoPath = "HEDS\\disk\\"; //磁盘信息文件目录
-        string RootPath = "HEDS\\disk\\";      //根目录
-        string C = "HEDS\\disk\\C\\";          //C
-        string E = "HEDS\\disk\\E\\";          //E
-        string F = "HEDS\\disk\\E\\";          //F
-        DiskInfo diskinfo = new DiskInfo();    //磁盘信息对象
+        string PlayDataPath = "Game\\Save\\";                                       //玩家信息路径
+        string DiskInfoPath = "HEDS\\disk\\";                                       //磁盘信息文件目录
+        string RootPath = "HEDS\\disk\\";                                           //根目录
+        string C = "HEDS\\disk\\C\\";                                               //C
+        string E = "HEDS\\disk\\E\\";                                               //E
+        string F = "HEDS\\disk\\E\\";                                               //F
+        DiskInfo diskinfo;                                       //磁盘信息对象
+        FormColum formColum;
         DiskState diskState;
-
-        FormColum formColum = new FormColum();
         TEXT text = new TEXT();
         FILE file = new FILE();
         DATA data = new DATA();
+
+        /// <summary>
+        /// 初始化数据
+        /// </summary>
+        /// <param name="Name">玩家名 以便寻找文件</param>
+        public FileSystem(string Name)
+        {
+            diskState = DiskState.OUT;
+            diskinfo = new DiskInfo();
+            formColum = new FormColum();
+            diskinfo = (DiskInfo)file.GetObjectData(PlayDataPath + Name + @"\" + DiskInfoPath, "diskinfo_D4286d.disk"); //载入磁盘信息
+        }
+
         string Input;
-        string Name = File.ReadAllText("Game\\Save\\QuickLoadData.hawksav"); //获取玩家名
+        string Name = File.ReadAllText("Game\\Save\\QuickLoadData.hawksav");        //获取玩家名
         public void Command()
         {
             diskState = DiskState.OUT;;
-            diskinfo = (DiskInfo)file.GetObjectData("Game\\Save\\" + Name + "\\HEDS\\disk\\", "diskinfo.disk");//获取玩家磁盘信息与大小
-            DrawUI("FILE COMMAND");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
             GetDiskView();
             while (true)
             {
-                Console.Write("  User>File>");
+                Console.Write("  {0}>File>{1}>",Name,diskState);
                 Input = Console.ReadLine();
                 if (Input == "cls"&&Input.Length==3)
                 {
                     Console.Clear();
-                    DrawUI("FILE COMMAND");
+                    formColum.ShowSimpleSolidFormColumn("DISK", 80, 0, ConsoleColor.Black, ConsoleColor.Green); //+1
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine();
                 }
                 //进入指定盘符
@@ -63,6 +77,10 @@ namespace HawkEye.HEDS.Files
                         GoDiskInfo("F");
                     }
                 }
+                else if (Input.Contains("list"))
+                {
+                    ListIndex(diskState, Input);
+                }
                 else if(Input.Length==0)
                 {
                     Console.WriteLine("  空指令");
@@ -74,22 +92,6 @@ namespace HawkEye.HEDS.Files
             }
         }
 
-        /// <summary>
-        /// 显示UI
-        /// </summary>
-        /// <returns></returns>
-        void DrawUI(string titile)
-        {
-            int MaxLine = 1;
-            Console.WriteLine();  //+1
-            formColum.ShowSimpleSolidFormColumn(titile, 80, 0, ConsoleColor.Black, ConsoleColor.Green); //+1
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.SetCursorPosition(0, 28);//光标移动到底部
-            MaxLine = Console.CursorTop;  //+1
-            //formColum.ShowSimpleSolidFormColumn("User:", 80, 0, ConsoleColor.Black, ConsoleColor.Green); //+1
-            Console.SetCursorPosition(0, 2);
-            //return MaxLine;
-        }
 
         /// <summary>
         /// 获取磁盘目录视图
@@ -97,16 +99,16 @@ namespace HawkEye.HEDS.Files
         void GetDiskView()
         {
             diskinfo.DISK_C = 64;
-            diskinfo.DISK_E = 35;
-            diskinfo.DISK_F = 128;
+            diskinfo.DISK_E = 12;
+            diskinfo.DISK_F = 35;
             //图示
-            Console.Write("\n  占用比 [ C / D / E ]\n\n  ");
+            Console.Write("\n  占用比 [ C / D / E ]\n\n");
             GetState(diskinfo.DISK_C); 
             GetState(diskinfo.DISK_E);
             GetState(diskinfo.DISK_F);
             Console.WriteLine("\n");
             //文字数据
-            Console.WriteLine("  C:\\  {0}/128\n  E:\\  {1}/128\n  F:\\  {2}/64\n", diskinfo.DISK_C,diskinfo.DISK_E,diskinfo.DISK_F);
+            Console.WriteLine("  C:\t{0}/128\n  E:\t{1}/128\n  F:\t{2}/64\n", diskinfo.DISK_C,diskinfo.DISK_E,diskinfo.DISK_F);
         }
         /// <summary>
         /// 获取磁盘状态
@@ -152,30 +154,32 @@ namespace HawkEye.HEDS.Files
             //状态判断
             //例如，状态为C，那么，打开文件则只打开C目录下的，以此类推。
             if (Disk == "C") { diskState = DiskState.C; }else if (Disk == "E") { diskState = DiskState.E; }else if (Disk == "F") { diskState = DiskState.F; }
+        }
 
-            Console.Clear();
-            Console.WriteLine();
-            formColum.ShowSimpleSolidFormColumn(diskState+ ":\\", 80, 0, ConsoleColor.Black, ConsoleColor.Green);
-            Console.WriteLine();
-            formColum.ShowSimpleSolidFormColumn("ID       Name            Time", 80, 0, ConsoleColor.Black, ConsoleColor.DarkGreen);
-            string[] a = file.GetFileIndex("Game\\Save\\" + Name + "\\HEDS\\disk\\" + Disk + "\\");
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Green;
-            if (a.Length > 0)
+        /// <summary>
+        /// 根据盘符列出文件或文件夹
+        /// </summary>
+        /// <param name="state"></param>
+        void ListIndex(DiskState state,string Input)
+        {
+
+            if (Input.Contains("list")&&diskState!=DiskState.OUT)
             {
-                for (int i = 0; i < a.Length; i++)
+                Console.WriteLine("\n  Date\t\tTime\t\tName");
+                string[] Index = file.GetFileIndex(PlayDataPath + Name + @"\" + RootPath + diskState + "\\");
+                for (int i = 0; i < Index.Length; i++)
                 {
-                    Console.WriteLine("  {0}        " + a[i].Substring(27)+"      "+Directory.GetCreationTime(a[i]), i);
-
+                    Thread.Sleep(30);
+                    Console.WriteLine("  "+File.GetCreationTime(Index[i]).AddYears(-30).ToString("yyyy.M.d") + "\t" + File.GetCreationTime(Index[i]).ToString("HH:mm:ss") + "\t" + Index[i].Substring(27));
                 }
-            }
-            else
-            {
-                formColum.ShowSimpleSolidFormColumn("!!NULL!!", 80, 0, ConsoleColor.Black, ConsoleColor.Red);
-                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine();
             }
-            Console.WriteLine();
+            else if(diskState == DiskState.OUT)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  ERROR: 你尚未进入任何盘符", Input);
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
         }
 
         /// <summary>

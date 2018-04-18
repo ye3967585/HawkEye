@@ -15,9 +15,8 @@ namespace HawkEye
             LevelList levelList = new LevelList(); 
             FormColum formColum = new FormColum();
             DATA data = new DATA();
-
             DosSystem dosSystem = new DosSystem();
-            FileSystem fileSystem = new FileSystem();
+            //FileSystem fileSystem = new FileSystem();
             FILE file = new FILE();
             //levelList.Level0();
             //DATA data = new DATA();
