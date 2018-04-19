@@ -224,6 +224,13 @@
             图形输出
             </summary>
         </member>
+        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.#ctor(System.Char,System.Char)">
+            <summary>
+            指定标识符
+            </summary>
+            <param name="F">前景标识符</param>
+            <param name="B">背景标识符</param>
+        </member>
         <member name="M:HawkTools.IO.Graphical.GRAPHICAL.DrawGraphics(System.Char[],System.ConsoleColor,System.Int32)">
             <summary>
             绘制一副图形

@@ -36,7 +36,7 @@ namespace HawkEye.HEDS.Dos
             file = new FILE();
             data = new DATA();
             formColum = new FormColum();
-            graphical = new GRAPHICAL();
+            graphical = new GRAPHICAL(' ','#');
             playerData = new PlayerData();
         }
 
@@ -49,8 +49,11 @@ namespace HawkEye.HEDS.Dos
             graphical.DrawGraphicsFormFiles(Text, ConsoleColor.Green);
             Thread.Sleep(1000);
             Console.WriteLine();
-            Console.Write("\t");
-            text.OutPutColorText(" Version 1.0.5 Realse CopyRight Hawk Eye 1985-1994\t", ConsoleColor.Black, ConsoleColor.Green, 15);
+            Console.Write("\t ");
+            text.OutPutColorText("  Version 1.0.5 Realse CopyRight Hawk Eye 1985-1994\t\n", ConsoleColor.Black, ConsoleColor.Green, 15);
+            Thread.Sleep(2000);
+            Console.Write("\t ");
+            text.OutPutColorText("  Loading ....\t\t\t\t\t\t", ConsoleColor.Black, ConsoleColor.DarkGreen, 15);
             Thread.Sleep(2000);
             Console.Clear();
         }
@@ -58,7 +61,7 @@ namespace HawkEye.HEDS.Dos
         #region 命令行视口
         public void Command()
         {
-            //StartingSystem();
+            StartingSystem();
             Console.WriteLine();
             formColum.ShowSimpleSolidFormColumn("SYSTEM COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green);
             Console.ForegroundColor = ConsoleColor.Green;

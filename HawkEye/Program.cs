@@ -12,6 +12,7 @@ namespace HawkEye
     {
         static void Main(string[] args)
         {
+            Console.Title = "HAWK EYE PROJECT";
             LevelList levelList = new LevelList(); 
             FormColum formColum = new FormColum();
             DATA data = new DATA();

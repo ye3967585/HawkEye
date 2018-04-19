@@ -20,3 +20,7 @@ D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEngine.dll
 D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEngine.pdb
 D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEngine.xml
 D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\obj\Debug\HawkEye.csproj.CopyComplete
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEye.exe.CodeAnalysisLog.xml
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEye.exe.lastcodeanalysissucceeded
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\obj\Debug\HawkEye.Properties.Resources.resources
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\obj\Debug\HawkEye.csproj.GenerateResource.cache

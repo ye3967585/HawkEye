@@ -43,11 +43,11 @@ namespace HawkEye.HEDS.Files
             diskState = DiskState.OUT;
             diskinfo = new DiskInfo();
             formColum = new FormColum();
-            diskinfo = (DiskInfo)file.GetObjectData(PlayDataPath + Name + @"\" + DiskInfoPath, "diskinfo_D4286d.disk"); //载入磁盘信息
+            diskinfo = (DiskInfo)file.GetObjectData(PlayDataPath + Name + @"\" + DiskInfoPath, "diskinfo_D4286d.disk");     //载入磁盘信息
         }
 
         string Input;
-        string Name = File.ReadAllText("Game\\Save\\QuickLoadData.hawksav");        //获取玩家名
+        string Name = File.ReadAllText("Game\\Save\\QuickLoadData.hawksav");                                                //获取玩家名
         public void Command()
         {
             diskState = DiskState.OUT; ;
@@ -67,6 +67,10 @@ namespace HawkEye.HEDS.Files
                 {
                     Input = data.CutString(Input, 4);
                     OpenFile(diskState, Input);
+                }else if (Input.Contains("del"))
+                {
+                    Input = data.CutString(Input, 3);
+                    DelFile(diskState, Input);
                 }
                 else if (Input.Contains("list"))
                 {
@@ -211,6 +215,22 @@ namespace HawkEye.HEDS.Files
                 Console.ForegroundColor = ConsoleColor.Green;
             }
 
+        }
+        
+        void DelFile(DiskState state, string FileName)
+        {
+            string Path = "Game\\Save\\" + Name.ToUpper() + "\\HEDS\\disk\\" + state.ToString().ToUpper() + "\\";
+            if (file.DelFile(Path, FileName))
+            {
+                Console.WriteLine("  已删除 {0}",FileName);
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  ERROR: 不存在的文件 {0}", Input);
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+           
         }
         #endregion
     }

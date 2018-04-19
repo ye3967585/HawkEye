@@ -22,6 +22,19 @@ namespace HawkTools.IO.Graphical
         int BufferHight;                  //缓冲区高度
         int BufferWeghit;                 //缓冲区宽度
         int CursorPos;                    //光标位置
+        char F_Draw, B_Draw;              //前景/背景标识符
+
+
+        /// <summary>
+        /// 指定标识符
+        /// </summary>
+        /// <param name="F">前景标识符</param>
+        /// <param name="B">背景标识符</param>
+        public GRAPHICAL(char F, char B)
+        {
+            F_Draw = F;
+            B_Draw = B;
+        }
 
         /// <summary>
         /// 绘制一副图形
@@ -35,11 +48,11 @@ namespace HawkTools.IO.Graphical
             {
                 Console.ForegroundColor = ConsoleColor.Black;
                 Thread.Sleep(2);
-                if (Source[i] == '#')
+                if (Source[i] == B_Draw)
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
                 }
-                if (Source[i] == ' ' && Source[i] != '\t')
+                if (Source[i] == F_Draw && Source[i] != '\t')
                 {
                     Console.BackgroundColor = Color;
                 }
@@ -60,11 +73,11 @@ namespace HawkTools.IO.Graphical
             {
                 Console.ForegroundColor = ConsoleColor.Black;
                 Thread.Sleep(2);
-                if (ReadData[i] == '#')
+                if (ReadData[i] == B_Draw)
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
                 }
-                if (ReadData[i] == ' ' && ReadData[i] != '\t')
+                if (ReadData[i] == F_Draw && ReadData[i] != '\t')
                 {
                     Console.BackgroundColor = Color;
                 }
