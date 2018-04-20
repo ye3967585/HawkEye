@@ -61,9 +61,9 @@ namespace HawkEye.HEDS.Dos
         #region 命令行视口
         public void Command()
         {
-            StartingSystem();
+            //StartingSystem();
             Console.WriteLine();
-            formColum.ShowSimpleSolidFormColumn("SYSTEM COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green);
+            formColum.ShowSimpleSolidFormColumn("COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n");
             GetInfo("info");                                // 显示基本的信息
@@ -85,7 +85,7 @@ namespace HawkEye.HEDS.Dos
                 {
                     Console.Clear();
                     Console.WriteLine();
-                    formColum.ShowSimpleSolidFormColumn("SYSTEM COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green);
+                    formColum.ShowSimpleSolidFormColumn("COMMAND", 80, 3, ConsoleColor.Black, ConsoleColor.Green);
                     Console.WriteLine("\n");
                 }
 
@@ -134,11 +134,11 @@ namespace HawkEye.HEDS.Dos
             //如果没有裁剪，那么肯定就是无参指令，否则就执行相应的参数
             if (Input.Contains("info"))
             {
-                Console.Write("  (C)1988-1997 Hawk Eye Dos System V 1.5.1\n");
+                Console.Write("\n  (C)1988-1997 Hawk Eye Dos System V 1.5.1\n");
             }
             else if (Input.Contains("user"))
             {
-                Console.Write("  用户名 :\t{0}\n" + "  IP :\t\t{1}\n" + "  等级 :\t{2}-{3}\n\n", playerData.Name, playerData.IP, playerData.Level, playerData.LevelName);
+                Console.Write("\n  用户名 :\t{0}\n" + "  IP :\t\t{1}\n" + "  等级 :\t{2}-{3}\n\n", playerData.Name, playerData.IP, playerData.Level, playerData.LevelName);
             }
             else
             {

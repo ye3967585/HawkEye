@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#Tips(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="为格式化方法提高正确的参数" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2018-04-19 07:25:28Z" FixCategory="DependsOnFix">
+            <Message TypeName="为格式化方法提高正确的参数" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2018-04-20 05:42:25Z" FixCategory="DependsOnFix">
              <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\HEDS" File="Dos.cs" Line="191">方法 'DosSystem.Tips(int)' 调用 'Console.WriteLine(string, object)' 并且不为参数 "1" 提供格式项。提供的格式字符串为:“"  TIPS: 遇到困难？请输入命令 help 查阅相关帮助"”</Issue>
             </Message>
            </Messages>
@@ -25,17 +25,10 @@
        <Types>
         <Type Name="FileSystem" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Members>
-          <Member Name="#Command()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
-           <Messages>
-            <Message TypeName="为格式化方法提高正确的参数" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2018-04-19 07:25:28Z" FixCategory="DependsOnFix">
-             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\HEDS" File="File.cs" Line="84">方法 'FileSystem.Command()' 调用 'Console.WriteLine(string, object)' 并且不为参数 "1" 提供格式项。提供的格式字符串为:“"  ERROR: 你尚未进入任何盘符内"”</Issue>
-            </Message>
-           </Messages>
-          </Member>
           <Member Name="#ListIndex(HawkEye.HEDS.Files.DiskState,System.String)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="为格式化方法提高正确的参数" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2018-04-19 07:25:28Z" FixCategory="DependsOnFix">
-             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\HEDS" File="File.cs" Line="194">方法 'FileSystem.ListIndex(DiskState, string)' 调用 'Console.WriteLine(string, object)' 并且不为参数 "1" 提供格式项。提供的格式字符串为:“"  ERROR: 你尚未进入任何盘符"”</Issue>
+            <Message TypeName="为格式化方法提高正确的参数" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2018-04-20 05:42:25Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\HEDS" File="File.cs" Line="200">方法 'FileSystem.ListIndex(DiskState, string)' 调用 'Console.WriteLine(string, object)' 并且不为参数 "1" 提供格式项。提供的格式字符串为:“"  ERROR: 你尚未进入任何盘符"”</Issue>
             </Message>
            </Messages>
           </Member>

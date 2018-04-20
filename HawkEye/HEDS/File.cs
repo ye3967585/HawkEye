@@ -16,15 +16,16 @@ namespace HawkEye.HEDS.Files
     {
         C, E, F, OUT
     }
+
     public class FileSystem
     {
+        bool isBreak;                                                               //是否结束了输入
+        string Input;                                                               //接受用户输入
+        DiskInfo diskinfo;                                                          //磁盘信息对象
         string PlayDataPath = "Game\\Save\\";                                       //玩家信息路径
         string DiskInfoPath = "HEDS\\disk\\";                                       //磁盘信息文件目录
         string RootPath = "HEDS\\disk\\";                                           //根目录
-        string C = "HEDS\\disk\\C\\";                                               //C
-        string E = "HEDS\\disk\\E\\";                                               //E
-        string F = "HEDS\\disk\\E\\";                                               //F
-        DiskInfo diskinfo;                                                          //磁盘信息对象
+        string Name = File.ReadAllText("Game\\Save\\QuickLoadData.hawksav");        //获取玩家名
         FormColum formColum;
         DiskState diskState;
         TEXT text;
@@ -37,6 +38,7 @@ namespace HawkEye.HEDS.Files
         /// <param name="Name">玩家名 以便寻找文件</param>
         public FileSystem(string Name)
         {
+            isBreak = false;
             text = new TEXT();
             file = new FILE();
             data = new DATA();
@@ -46,15 +48,14 @@ namespace HawkEye.HEDS.Files
             diskinfo = (DiskInfo)file.GetObjectData(PlayDataPath + Name + @"\" + DiskInfoPath, "diskinfo_D4286d.disk");     //载入磁盘信息
         }
 
-        string Input;
-        string Name = File.ReadAllText("Game\\Save\\QuickLoadData.hawksav");                                                //获取玩家名
+        #region 命令行视口
         public void Command()
         {
             diskState = DiskState.OUT; ;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine();
             GetDiskView();
-            while (true)
+            while (!isBreak)
             {
                 Console.Write("  {0}>SYSTEM\\DISK\\{1}>", Name, diskState);
                 Input = Console.ReadLine();
@@ -65,9 +66,19 @@ namespace HawkEye.HEDS.Files
                 }
                 else if (Input.Contains("open"))
                 {
-                    Input = data.CutString(Input, 4);
-                    OpenFile(diskState, Input);
-                }else if (Input.Contains("del"))
+                    if (diskState != DiskState.OUT)
+                    {
+                        Input = data.CutString(Input, 4);
+                        OpenFile(diskState, Input);
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  ERROR: 你尚未进入任何盘符内");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                }
+                else if (Input.Contains("del"))
                 {
                     Input = data.CutString(Input, 3);
                     DelFile(diskState, Input);
@@ -81,7 +92,7 @@ namespace HawkEye.HEDS.Files
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("  ERROR: 你尚未进入任何盘符内", Input);
+                        Console.WriteLine("  ERROR: 你尚未进入任何盘符内");
                         Console.ForegroundColor = ConsoleColor.Green;
                     }
 
@@ -94,9 +105,8 @@ namespace HawkEye.HEDS.Files
                     }
                     else
                     {
-                        break;
+                        isBreak = true;
                     }
-                    
                 }
                 else if (Input == "help")
                 {
@@ -104,19 +114,21 @@ namespace HawkEye.HEDS.Files
                 }
                 else if (Input == "exit")
                 {
-                    break;
+                    isBreak = true;
                 }
             }
         }
+        #endregion
+
         #region 适用于本模块的私有方法集
         /// <summary>
         /// 获取磁盘目录视图
         /// </summary>
         void GetDiskView()
         {
-            diskinfo.DISK_C = 64;
-            diskinfo.DISK_E = 12;
-            diskinfo.DISK_F = 35;
+            diskinfo.DISK_C = 128;
+            diskinfo.DISK_E = 128;
+            diskinfo.DISK_F = 64;
             //图示
             Console.Write("\n  占用比 [ C / D / E ]\n\n  ");
             GetState(diskinfo.DISK_C);
@@ -216,13 +228,17 @@ namespace HawkEye.HEDS.Files
             }
 
         }
-        
+        /// <summary>
+        /// 删除文件
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="FileName"></param>
         void DelFile(DiskState state, string FileName)
         {
             string Path = "Game\\Save\\" + Name.ToUpper() + "\\HEDS\\disk\\" + state.ToString().ToUpper() + "\\";
             if (file.DelFile(Path, FileName))
             {
-                Console.WriteLine("  已删除 {0}",FileName);
+                Console.WriteLine("  已删除 {0}", FileName);
             }
             else
             {
@@ -230,7 +246,7 @@ namespace HawkEye.HEDS.Files
                 Console.WriteLine("  ERROR: 不存在的文件 {0}", Input);
                 Console.ForegroundColor = ConsoleColor.Green;
             }
-           
+
         }
         #endregion
     }

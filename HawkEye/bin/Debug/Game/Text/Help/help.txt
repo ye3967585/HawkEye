@@ -2,7 +2,7 @@
   指令		描述		参数		参数描述 
 
   MAIL		邮件		
-  DISK		文件		
+  DISK		文件管理		
   HACK		渗透工具
   MISSION	任务
   CLS		清屏 
