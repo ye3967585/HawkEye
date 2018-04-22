@@ -224,28 +224,39 @@
             图形输出
             </summary>
         </member>
-        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.#ctor(System.Char,System.Char)">
+        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.#ctor">
             <summary>
-            指定标识符
+            初始化
             </summary>
-            <param name="F">前景标识符</param>
-            <param name="B">背景标识符</param>
         </member>
-        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.DrawGraphics(System.Char[],System.ConsoleColor,System.Int32)">
+        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.DrawLowGraphics(System.Char[],System.Char,System.Char,System.ConsoleColor,System.Int32)">
             <summary>
-            绘制一副图形
+            绘制一副低级图形
             </summary>
             <param name="Source">文件图形数据</param>
+            <param name="B">背景标识符</param>
+            <param name="F">前景标识符</param>
             <param name="Color">色</param>
             <param name="Speed">输出速度</param>
         </member>
-        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.DrawGraphicsFormFiles(System.String,System.ConsoleColor,System.Int32)">
+        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.DrawLowGraphicsFromFiles(System.String,System.Char,System.Char,System.ConsoleColor,System.Int32)">
             <summary>
-            绘制一副图形，来自于数据文件
+            绘制一副低级图形，来自于数据文件
             </summary>
-            <param name="File">文件图形数据</param>
-            <param name="Color">前景色</param>
-            <param name="Speed">输出速度</param>
+            <param name="File">文件</param>
+            <param name="B">背景标识符</param>
+            <param name="F">前景标识符</param>
+            <param name="Color">颜色</param>
+            <param name="Speed">速度</param>
+        </member>
+        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.DrawHighGraphics(System.String,System.Int32,System.Int32)">
+            <summary>
+            根据提供的文件，绘制一副高级图形
+            （此方法基于VB.NET By Gordon Walkdby）
+            </summary>
+            <param name="File">文件</param>
+            <param name="Width">宽度</param>
+            <param name="Hight">高度</param>
         </member>
         <member name="T:HawkTools.IO.Text.TEXT">
             <summary>
@@ -287,6 +298,16 @@
             <param name="ForegroundColor">前景色（仅会改变文本所在范围的颜色）</param>
             <param name="BackgroundColor">背景色（仅会改变文本所在范围的颜色）</param>
             <param name="OutSpeed">输出速度</param>
+        </member>
+        <member name="M:HawkTools.IO.Text.TEXT.TwinkleText(System.String,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>
+            在单个线程上输出闪烁的文本（不支持多线程）
+            </summary>
+            <param name="Text">文本</param>
+            <param name="Color_1">第一种颜色</param>
+            <param name="Color_2">第二种颜色</param>
+            <param name="OutSpeed">闪烁速度</param>
+            <param name="second">闪烁次数</param>
         </member>
     </members>
 </doc>

@@ -36,7 +36,7 @@ namespace HawkEye.HEDS.Dos
             file = new FILE();
             data = new DATA();
             formColum = new FormColum();
-            graphical = new GRAPHICAL(' ','#');
+            graphical = new GRAPHICAL();
             playerData = new PlayerData();
         }
 
@@ -46,7 +46,7 @@ namespace HawkEye.HEDS.Dos
         public void StartingSystem()
         {
             Text = "Game\\Text\\heds.txt";
-            graphical.DrawGraphicsFormFiles(Text, ConsoleColor.Green);
+            //graphical.DrawLowGraphicsFromFiles(Text, ConsoleColor.Green);
             Thread.Sleep(1000);
             Console.WriteLine();
             Console.Write("\t ");

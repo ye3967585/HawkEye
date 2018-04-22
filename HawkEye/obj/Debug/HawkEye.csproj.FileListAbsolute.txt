@@ -24,3 +24,6 @@ D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEye.exe.CodeAnalysisL
 D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\HawkEye.exe.lastcodeanalysissucceeded
 D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\obj\Debug\HawkEye.Properties.Resources.resources
 D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\obj\Debug\HawkEye.csproj.GenerateResource.cache
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\DrawImageForConsole.dll
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\DrawImageForConsole.pdb
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\bin\Debug\DrawImageForConsole.xml

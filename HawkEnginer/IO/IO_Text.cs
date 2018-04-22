@@ -97,5 +97,37 @@ namespace HawkTools.IO.Text
             string FileText = System.IO.File.ReadAllText(Path);                          //将文件转换为文本变量
             OutPutColorText(FileText, ForegroundColor, BackgroundColor, OutSpeed);  //输出
         }
+
+        /// <summary>
+        /// 在单个线程上输出闪烁的文本（不支持多线程）
+        /// </summary>
+        /// <param name="Text">文本</param>
+        /// <param name="Color_1">第一种颜色</param>
+        /// <param name="Color_2">第二种颜色</param>
+        /// <param name="OutSpeed">闪烁速度</param>
+        /// <param name="second">闪烁次数</param>
+        public void TwinkleText(string Text, ConsoleColor Color_1, ConsoleColor Color_2, int OutSpeed, int second)
+        {
+            bool isOver = false;
+            int s = 0;
+            while (!isOver)
+            {
+                Console.Clear();
+                if (s > second)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    isOver = true;
+                }
+                
+                Console.ForegroundColor = Color_1;
+                Console.WriteLine(Text);
+                Thread.Sleep(OutSpeed);
+                Console.Clear();
+                Console.ForegroundColor = Color_2;
+                Console.WriteLine(Text);
+                Thread.Sleep(OutSpeed);
+                s++;
+            }
+        }
     }
 }
