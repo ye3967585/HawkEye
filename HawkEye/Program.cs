@@ -5,6 +5,7 @@ using HawkTools.IO.File;
 using HawkTools.IO.Graphical;
 using HawkEye.HEDS.Dos;
 using HawkEye.HEDS.Files;
+using HawkEye.HEDS.Mail;
 using HawkEye.LevelManager;
 using System;
 
@@ -13,7 +14,7 @@ namespace HawkEye
     class Program
     {
         static void Main(string[] args)
-        {
+        {  
             //Console.Title = "HAWK EYE PROJECT";
             LevelList levelList = new LevelList(); 
             FormColum formColum = new FormColum();
@@ -23,6 +24,8 @@ namespace HawkEye
             FILE file = new FILE();
             TEXT t = new TEXT();
             GRAPHICAL g = new GRAPHICAL();
+
+            Mail mail;
             //levelList.Level0();
             //DATA data = new DATA();
             //string c = data.CutString("help a", 4);
@@ -43,6 +46,8 @@ namespace HawkEye
             //Console.ReadKey();
             //t.TwinkleText("\n\n\n\t\t\tI love you bitch!", ConsoleColor.Blue, ConsoleColor.Yellow, 10,20);
             //g.DrawHighGraphics(@"Game\166.jpg",30,30);
+            //mail=(Mail)file.GetObjectData("Game\\", "HELLO.mail");
+           // Console.WriteLine(mail.Content);
         }
     }
 }

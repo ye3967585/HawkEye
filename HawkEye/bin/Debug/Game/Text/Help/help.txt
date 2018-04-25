@@ -6,8 +6,8 @@
   HACK		渗透工具
   MISSION	任务
   CLS		清屏 
-  HELP		帮助		*FILE		列出文件帮助
-				*MAIL		列出邮件帮助
+  HELP		帮助		*F		列出文件帮助
+				*M		列出邮件帮助
   INFO		系统版本	*USER		列出用户信息
   
   [带有*的参数均为可选参数]

@@ -1,4 +1,5 @@
 ﻿using HawkEye.HEDS.Files;
+using HawkEye.HEDS.Mail;
 using HawkEye.UserData;
 using HawkTools.Edit;
 using HawkTools.IO.Data;
@@ -26,6 +27,7 @@ namespace HawkEye.HEDS.Dos
         GRAPHICAL graphical;
         PlayerData playerData;                                                      //玩家数据
         FileSystem fileSystem;
+        MailSystem mailSystem;
         string PlayDataPath = @"Game\Save\";                                        //存档路径                                       
         string QuickLoad = File.ReadAllText(@"Game\Save\QuickLoadData.hawksav");    //玩家名
 
@@ -100,6 +102,10 @@ namespace HawkEye.HEDS.Dos
                 {
                     fileSystem = new FileSystem(playerData.Name);
                     fileSystem.Command();
+                }else if (Input.Contains("mail"))
+                {
+                    mailSystem = new MailSystem(playerData.Name);
+                    mailSystem.Command();
                 }
                 #region Help
                 else if (Input.Contains("help"))
@@ -161,11 +167,11 @@ namespace HawkEye.HEDS.Dos
             {
                 text.OutPutTextFromFiles("Game\\Text\\Help\\help.txt", 1);
             }
-            else if (Input.Contains("file"))
+            else if (Input.Contains("f"))
             {
                 text.OutPutTextFromFiles("Game\\Text\\Help\\file.txt", 1);
             }
-            else if (Input.Contains("mail"))
+            else if (Input.Contains("m"))
             {
                 text.OutPutTextFromFiles("Game\\Text\\Help\\mail.txt", 1);
             }

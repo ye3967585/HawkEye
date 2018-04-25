@@ -1,7 +1,8 @@
-﻿using HawkTools.Edit;
+﻿using HawkEye.HEDS.Mail;
+using HawkEye.UserData;
+using HawkTools.Edit;
 using HawkTools.IO.File;
 using HawkTools.IO.Text;
-using HawkEye.UserData;
 using System;
 using System.Threading;
 
@@ -12,13 +13,32 @@ namespace HawkEye.EvenManger
     /// </summary>
     public class Even
     {
-        FILE file = new FILE();
-        TEXT text = new TEXT();
-        ProgressBar progressBar = new ProgressBar();
-        FormColum formColum = new FormColum();
-        PlayerData playerData = new PlayerData();
-        DiskInfo diskInfo = new DiskInfo();
-        Random random = new Random();
+        FILE file;
+        TEXT text;
+        ProgressBar progressBar;
+        FormColum formColum;
+        PlayerData playerData;
+        DiskInfo diskInfo;
+        Random random;
+
+        Mail mail;
+
+        string PlayerName;
+        string Mailpath;
+
+        public Even(string Name=null)
+        {
+            file = new FILE();
+            text = new TEXT();
+            progressBar = new ProgressBar();
+            formColum = new FormColum();
+            playerData = new PlayerData();
+            diskInfo = new DiskInfo();
+            random = new Random();
+            PlayerName = Name;
+            Mailpath= "Game\\Save\\" + Name + "\\HEDS\\Mail\\";
+        }
+
         /// <summary>
         /// 注册新账户
         /// </summary>
@@ -112,5 +132,38 @@ namespace HawkEye.EvenManger
             text.OutPutText("\n\n  完成！      ", 15);
             Thread.Sleep(3000);
         }
+
+        #region 邮件类
+
+        /// <summary>
+        /// 接受普通邮件
+        /// </summary>
+        /// <param name="Path">路径</param>
+        /// <param name="Title"></param>
+        /// <param name="Sender"></param>
+        /// <param name="Content"></param>
+        /// <param name="Abstract"></param>
+        /// <param name="isUrgent"></param>
+        public void GetNewMail(string Path,string Title,string Sender, string Content, string Abstract,bool isUrgent)
+        {
+            mail.Title = Title;
+            mail.Sender = Sender;
+            mail.Content = Content;
+            mail.Abstract = Abstract;
+            mail.isUrgent = isUrgent;
+            mail.Date = DateTime.Now.AddYears(-30).ToString("yyyy.M.d");
+            mail.Time = DateTime.Now.AddYears(-30).ToString("HH:mm:ss");
+            if (isUrgent)
+            {
+                text.OutPutColorText("  MAIL-紧急:[" + mail.Date + @"\" + mail.Time + "]收到来自" + Sender + "的消息:" + Abstract, ConsoleColor.Red, ConsoleColor.Black, 1);             
+            }
+            else
+            {
+                text.OutPutColorText("  MAIL:[" + mail.Date+@"\"+mail.Time + "]收到来自" + Sender + "的消息:" + Abstract, ConsoleColor.Blue, ConsoleColor.Black, 1);
+            }
+            file.CreateObjectData(mail, Mailpath, Title);
+            Console.WriteLine();
+        }
+        #endregion
     }
 }

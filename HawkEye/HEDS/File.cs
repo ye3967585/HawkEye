@@ -188,7 +188,6 @@ namespace HawkEye.HEDS.Files
         /// <param name="state"></param>
         void ListIndex(DiskState state, string Input)
         {
-
             if (Input.Contains("list") && diskState != DiskState.OUT)
             {
                 Console.WriteLine("\n  Date\t\tTime\t\tName");
@@ -203,7 +202,7 @@ namespace HawkEye.HEDS.Files
             else if (diskState == DiskState.OUT)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("  ERROR: 你尚未进入任何盘符", Input);
+                Console.WriteLine("  ERROR: 你尚未进入任何盘符");
                 Console.ForegroundColor = ConsoleColor.Green;
             }
         }

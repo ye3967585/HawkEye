@@ -16,7 +16,7 @@ namespace HawkEye.LevelManager
         FILE file = new FILE();
         FormColum formColum = new FormColum();
         ProgressBar progressBar = new ProgressBar();
-        Even even = new Even();
+        Even even = new Even("AA");
         bool isDead = false;    //是否死亡
 
         public void Level0()
@@ -31,6 +31,11 @@ namespace HawkEye.LevelManager
             Console.ReadKey(true);
             Console.Clear();
             even.SignUpUser();
+        }
+
+        public void Level_1()
+        {
+
         }
     }
 }
