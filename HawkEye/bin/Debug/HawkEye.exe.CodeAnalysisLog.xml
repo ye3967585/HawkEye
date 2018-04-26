@@ -8,12 +8,12 @@
      <Namespaces>
       <Namespace Name="HawkEye.HEDS.Dos">
        <Types>
-        <Type Name="DosSystem" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+        <Type Name="HawkDosSystem" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
          <Members>
           <Member Name="#Tips(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="为格式化方法提高正确的参数" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2018-04-26 04:06:19Z" FixCategory="DependsOnFix">
-             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\HEDS" File="Dos.cs" Line="197">方法 'DosSystem.Tips(int)' 调用 'Console.WriteLine(string, object)' 并且不为参数 "1" 提供格式项。提供的格式字符串为:“"  TIPS: 遇到困难？请输入命令 help 查阅相关帮助"”</Issue>
+            <Message TypeName="为格式化方法提高正确的参数" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2018-04-26 09:00:55Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\HEDS" File="Dos.cs" Line="201">方法 'HawkDosSystem.Tips(int)' 调用 'Console.WriteLine(string, object)' 并且不为参数 "1" 提供格式项。提供的格式字符串为:“"  TIPS: 遇到困难？请输入命令 help 查阅相关帮助"”</Issue>
             </Message>
            </Messages>
           </Member>

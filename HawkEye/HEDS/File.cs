@@ -43,9 +43,8 @@ namespace HawkEye.HEDS.Files
             file = new FILE();
             data = new DATA();
             diskState = DiskState.OUT;
-            diskinfo = new DiskInfo();
             formColum = new FormColum();
-            diskinfo = (DiskInfo)file.GetObjectData(PlayDataPath + Name + @"\" + DiskInfoPath, "diskinfo_D4286d.disk");     //载入磁盘信息
+            diskinfo = (DiskInfo)file.GetObjectData(PlayDataPath + Name + @"\" + DiskInfoPath, "diskinfo.disk");     //载入磁盘信息
         }
 
         #region 命令行视口

@@ -42,7 +42,6 @@ namespace HawkEye.HEDS.Dos
             data = new DATA();
             formColum = new FormColum();
             graphical = new GRAPHICAL();
-            playerData = new PlayerData();
         }
 
         /// <summary>
@@ -105,7 +104,8 @@ namespace HawkEye.HEDS.Dos
                 {
                     fileSystem = new FileSystem(playerData.Name);
                     fileSystem.Command();
-                }else if (Input.Contains("mail"))
+                }
+                else if (Input.Contains("mail"))
                 {
                     mailSystem = new MailSystem(playerData.Name);
                     mailSystem.Command();
@@ -139,6 +139,7 @@ namespace HawkEye.HEDS.Dos
         /// <param name="Input">输入</param>
         void GetInfo(string Input = null)
         {
+
             playerData = (PlayerData)file.GetObjectData(PlayDataPath + QuickLoad + @"\", "Gamesave_" + QuickLoad + ".hawksav");
             //如果没有裁剪，那么肯定就是无参指令，否则就执行相应的参数
             if (Input.Contains("info"))

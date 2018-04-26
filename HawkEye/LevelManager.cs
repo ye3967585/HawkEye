@@ -17,7 +17,7 @@ namespace HawkEye.LevelManager
         FormColum formColum = new FormColum();
         ProgressBar progressBar = new ProgressBar();
         Even even = new Even("AA");
-        bool isDead = false;    //是否死亡
+        bool isDead = false;                            //是否死亡
 
         public void Level0()
         {

@@ -22,9 +22,9 @@ namespace HawkEye.UserData
     /// 玩家信息
     /// </summary>
     [Serializable]
-    public class PlayerData
+    public struct PlayerData
     {
-       
+
         /// <summary>
         /// Player Data
         /// </summary>
@@ -43,7 +43,7 @@ namespace HawkEye.UserData
     /// 磁盘信息
     /// </summary>
     [Serializable]
-    public class DiskInfo
+    public struct DiskInfo
     {
         /// <summary>
         /// Disk Info

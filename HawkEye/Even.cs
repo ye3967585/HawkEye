@@ -32,8 +32,6 @@ namespace HawkEye.EvenManger
             text = new TEXT();
             progressBar = new ProgressBar();
             formColum = new FormColum();
-            playerData = new PlayerData();
-            diskInfo = new DiskInfo();
             random = new Random();
             PlayerName = Name;
             Mailpath= "Game\\Save\\" + Name + "\\HEDS\\Mail\\";
@@ -59,7 +57,7 @@ namespace HawkEye.EvenManger
                 //判断用户名长度是否符合规则，防止空的用户名出现
                 if (UserName.Length > 0&&UserName.Length==4)
                 {
-                    playerData.Name = UserName;
+                    playerData.Name += UserName;
                     break;
                 }
                 else
@@ -113,7 +111,7 @@ namespace HawkEye.EvenManger
             file.CreateDir("Game\\Save\\" + UserName + "\\HEDS\\disk\\", "E\\");
             file.CreateDir("Game\\Save\\" + UserName + "\\HEDS\\disk\\", "F\\");
             file.CreateTextData(UserName, "Game\\Save\\", "QuickLoadData.hawksav"); //快速读取信息
-            file.CreateObjectData(diskInfo, "Game\\Save\\" + UserName + "\\HEDS\\disk\\", "diskinfo_D" + random.Next(1000, 9999) + "d.disk"); //磁盘信息
+            file.CreateObjectData(diskInfo, "Game\\Save\\" + UserName + "\\HEDS\\disk\\", "diskinfo.disk"); //磁盘信息
             file.CreateObjectData(playerData, "Game\\Save\\" + UserName + "\\", "Gamesave_" + UserName + ".hawksav"); //玩家信息信息
             text.OutPutText("\n\n  检查数据格式  ", 15);
             progressBar.ShowProgressBar(15, 55, ConsoleColor.Green);

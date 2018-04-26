@@ -53,7 +53,7 @@ namespace HawkTools.IO.FileCrtl
         public void CreateTextData(string Text, string Path, string FileName)
         {
             StreamWriter TextData = new StreamWriter(Path + FileName);
-            TextData.WriteLine(Text);
+            TextData.Write(Text);
             TextData.Close();
         }
         /// <summary>
@@ -107,16 +107,15 @@ namespace HawkTools.IO.FileCrtl
                 return false; //否则返回 false。
             }
         }
-
         /// <summary>
         /// 在一个已经存在的文本后面追加一行新的文字
         /// </summary>
         /// <param name="Path">路径</param>
         /// <param name="FileName">名称</param>
         /// <param name="Text">文本</param>
-        public void AddText(string Path,string FileName, params string[] Text)
+        public void AddText(string Path, string FileName, params string[] Text)
         {
-            File.AppendAllLines(Path + FileName,Text);
+            File.AppendAllLines(Path + FileName, Text);
         }
         #endregion
 
@@ -140,7 +139,6 @@ namespace HawkTools.IO.FileCrtl
             {
                 return null;
             }
-
         }
         /// <summary>
         /// 通过索引号获取文本文件中的文本。
@@ -244,7 +242,6 @@ namespace HawkTools.IO.FileCrtl
             {
                 return false; //否则返回 false。
             }
-
         }
         /// <summary>
         /// 复制文件副本至指定路径，如果目标路径下文件已经存在，则会自动覆盖，随后向外界告知文件是否被复制。
@@ -265,7 +262,6 @@ namespace HawkTools.IO.FileCrtl
             {
                 return false; //否则返回 false。
             }
-
         }
         #endregion
 
