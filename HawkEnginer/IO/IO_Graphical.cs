@@ -6,7 +6,7 @@
  * 1.根据相应数据文件输出指定的图形
  * 2.指定png、jpg文件，在屏幕输出指定的图形
  *********************************************************************************************************/
-using HawkTools.IO.File;
+using HawkTools.IO.FileCrtl;
 using HawkTools.IO.Text;
 using System.Threading;
 using System;

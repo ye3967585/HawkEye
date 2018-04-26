@@ -19,7 +19,7 @@ namespace HawkTools.Edit
         /// <summary>
         /// 绘制进度条
         /// </summary>
-        /// <param name="Conut">进度条长度</param>
+        /// <param name="Count">进度条长度</param>
         /// <param name="Speed">进度条速度</param>
         /// <param name="Color">进度条颜色</param>
         /// <param name="ShowDraw">显示填充图形</param>

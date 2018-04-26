@@ -3,7 +3,7 @@ using HawkEye.HEDS.Mail;
 using HawkEye.UserData;
 using HawkTools.Edit;
 using HawkTools.IO.Data;
-using HawkTools.IO.File;
+using HawkTools.IO.FileCrtl;
 using HawkTools.IO.Text;
 using HawkTools.IO.Graphical;
 using System;
@@ -12,7 +12,10 @@ using System.Threading;
 
 namespace HawkEye.HEDS.Dos
 {
-    class DosSystem
+    /// <summary>
+    /// 玩家操作的主系统
+    /// </summary>
+    class HawkDosSystem
     {
         string Text;
         string Input;                                                               //输入
@@ -31,7 +34,7 @@ namespace HawkEye.HEDS.Dos
         string PlayDataPath = @"Game\Save\";                                        //存档路径                                       
         string QuickLoad = File.ReadAllText(@"Game\Save\QuickLoadData.hawksav");    //玩家名
 
-        public DosSystem()
+        public HawkDosSystem()
         {
             ERROR = 0;
             text = new TEXT();
@@ -92,10 +95,10 @@ namespace HawkEye.HEDS.Dos
                 }
 
                 #region Info
-                else if (Input.Contains("info"))           //如果包含info，进入子判断语句
+                else if (Input.Contains("info"))                //如果包含info，进入子判断语句
                 {
-                    Input = data.CutString(Input, 4);       //裁字符串，只剩下参数值
-                    GetInfo(Input);                         //输入参数值
+                    Input = data.CutString(Input, 4);           //裁字符串，只剩下参数值
+                    GetInfo(Input);                             //输入参数值
                 }
                 #endregion
                 else if (Input.Contains("disk"))
@@ -203,6 +206,14 @@ namespace HawkEye.HEDS.Dos
         #endregion
 
 
+
+    }
+
+    /// <summary>
+    /// 空的预置系统，用于玩家需要连接渗透的对象
+    /// </summary>
+    class EmptyDosSystem
+    {
 
     }
 }

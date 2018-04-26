@@ -1,6 +1,6 @@
 ﻿using HawkTools.Edit;
 using HawkTools.IO.Data;
-using HawkTools.IO.File;
+using HawkTools.IO.FileCrtl;
 using HawkTools.IO.Text;
 using HawkEye.UserData;
 using System;
@@ -74,6 +74,9 @@ namespace HawkEye.HEDS.Mail
                 {
                     Input = data.CutString(Input, 3);
                     file.DelFile(path, Input);
+                }else if (Input == "help")
+                {
+                    text.OutPutTextFromFiles("Game\\Text\\Help\\mail.txt", 1);
                 }
                 else if (Input == "exit")
                 {
@@ -93,24 +96,33 @@ namespace HawkEye.HEDS.Mail
                 Console.WriteLine("\n  INBOX");//
                 Console.WriteLine("\n  DATE\t\tTIME\t\tSENDER\t\tTITLE");
                 string[] Index = file.GetFileIndex(path);
-                for (int i = 0; i < Index.Length; i++)
+                if (Index.Length > 0)
                 {
-                    Thread.Sleep(30);
-                    mail = (Mail)file.GetObjectData(path, Index[i].Substring(25));
-                    if (mail.isUrgent)
+                    for (int i = 0; i < Index.Length; i++)
                     {
-                        text.OutPutColorText("  " + File.GetCreationTime(Index[i]).AddYears(-30).ToString("yyyy.M.d") + "\t" + File.GetCreationTime(Index[i]).ToString("HH:mm:ss") + "\t" + mail.Sender + "\t\t" + Index[i].Substring(25) + "\t", ConsoleColor.Red, ConsoleColor.Black, 1);
+                        Thread.Sleep(30);
+                        mail = (Mail)file.GetObjectData(path, Index[i].Substring(25));
+                        if (mail.isUrgent)
+                        {
+                            text.OutPutColorText("  " + File.GetCreationTime(Index[i]).AddYears(-30).ToString("yyyy.M.d") + "\t" + File.GetCreationTime(Index[i]).ToString("HH:mm:ss") + "\t" + mail.Sender + "\t\t" + Index[i].Substring(25) + "\t", ConsoleColor.Red, ConsoleColor.Black, 1);
+                        }
+                        else if (mail.isEnclosure)
+                        {
+                            text.OutPutColorText("  " + File.GetCreationTime(Index[i]).AddYears(-30).ToString("yyyy.M.d") + "\t" + File.GetCreationTime(Index[i]).ToString("HH:mm:ss") + "\t" + mail.Sender + "\t\t" + Index[i].Substring(25) + "\t", ConsoleColor.Yellow, ConsoleColor.Black, 1);
+                        }
+                        else
+                        {
+                            text.OutPutColorText("  " + File.GetCreationTime(Index[i]).AddYears(-30).ToString("yyyy.M.d") + "\t" + File.GetCreationTime(Index[i]).ToString("HH:mm:ss") + "\t" + mail.Sender + "\t\t" + Index[i].Substring(25) + "\t", ConsoleColor.Green, ConsoleColor.Black, 1);
+                        }
+                        Console.WriteLine();
                     }
-                    else if (mail.isEnclosure)
-                    {
-                        text.OutPutColorText("  " + File.GetCreationTime(Index[i]).AddYears(-30).ToString("yyyy.M.d") + "\t" + File.GetCreationTime(Index[i]).ToString("HH:mm:ss") + "\t" + mail.Sender + "\t\t" + Index[i].Substring(25) + "\t", ConsoleColor.Yellow, ConsoleColor.Black, 1);
-                    }
-                    else
-                    {
-                        text.OutPutColorText("  " + File.GetCreationTime(Index[i]).AddYears(-30).ToString("yyyy.M.d") + "\t" + File.GetCreationTime(Index[i]).ToString("HH:mm:ss") + "\t" + mail.Sender + "\t\t" + Index[i].Substring(25) + "\t", ConsoleColor.Green, ConsoleColor.Black, 1);
-                    }
-                    Console.WriteLine();
                 }
+                else
+                {
+                    formColum.ShowSimpleSolidFormColumn("NULL", 80, 3, ConsoleColor.White, ConsoleColor.Red);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+                
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
             }

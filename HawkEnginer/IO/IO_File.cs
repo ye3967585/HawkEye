@@ -12,7 +12,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 
-namespace HawkTools.IO.File
+namespace HawkTools.IO.FileCrtl
 {
     /// <summary>
     /// 文件的操作与管理。
@@ -106,6 +106,17 @@ namespace HawkTools.IO.File
             {
                 return false; //否则返回 false。
             }
+        }
+
+        /// <summary>
+        /// 在一个已经存在的文本后面追加一行新的文字
+        /// </summary>
+        /// <param name="Path">路径</param>
+        /// <param name="FileName">名称</param>
+        /// <param name="Text">文本</param>
+        public void AddText(string Path,string FileName, params string[] Text)
+        {
+            File.AppendAllLines(Path + FileName,Text);
         }
         #endregion
 

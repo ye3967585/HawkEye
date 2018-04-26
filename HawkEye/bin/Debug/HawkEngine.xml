@@ -112,19 +112,19 @@
             <param name="CutLenth">删除长度</param>
             <returns>处理后的字符串</returns>
         </member>
-        <member name="T:HawkTools.IO.File.FILE">
+        <member name="T:HawkTools.IO.FileCrtl.FILE">
             <summary>
             文件的操作与管理。
             </summary>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.CreateDir(System.String,System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.CreateDir(System.String,System.String)">
             <summary>
             根据输入名称创建新的路径，如果已经存在相同的路径，则会自动覆盖
             </summary>
             <param name="Path">路径</param>
             <param name="Name">名称</param>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.CreateTextData(System.String,System.String,System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.CreateTextData(System.String,System.String,System.String)">
             <summary>
             创建文本文件,并输出到指定路径,如果文件已经存在，则会自动覆盖。
             </summary>
@@ -132,7 +132,7 @@
             <param name="Path">路径</param>
             <param name="FileName">文件名</param>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.CreateObjectData(System.Object,System.String,System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.CreateObjectData(System.Object,System.String,System.String)">
             <summary>
             创建能保存对象实例数据的加密文件,并输出到指定路径,如果文件已经存在，则会自动覆盖。
             </summary>
@@ -140,21 +140,29 @@
             <param name="Path">路径</param>
             <param name="FileName">文件名</param>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.DelDir(System.String,System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.DelDir(System.String,System.String)">
             <summary>
             删除路径，包含此路径下的所有文件。
             </summary>
             <param name="Path">路径</param>
             <param name="Name">名称</param>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.DelFile(System.String,System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.DelFile(System.String,System.String)">
             <summary>
             删除文件，随后向外界告知文件是否被删除。
             </summary>
             <param name="Path">文件名</param>
             <param name="FileName">路径</param>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.GetTextData(System.String,System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.AddText(System.String,System.String,System.String[])">
+            <summary>
+            在一个已经存在的文本后面追加一行新的文字
+            </summary>
+            <param name="Path">路径</param>
+            <param name="FileName">名称</param>
+            <param name="Text">文本</param>
+        </member>
+        <member name="M:HawkTools.IO.FileCrtl.FILE.GetTextData(System.String,System.String)">
             <summary>
             获取文本文件中的文本。
             </summary>
@@ -162,7 +170,7 @@
             <param name="FileName">文件名</param>
             <returns>文件内容</returns>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.GetTextDataIndexPID(System.String[],System.Int32,System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.GetTextDataIndexPID(System.String[],System.Int32,System.String)">
             <summary>
             通过索引号获取文本文件中的文本。
             </summary>
@@ -171,7 +179,7 @@
             <param name="PID"></param>
             <returns>指定文本</returns>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.GetObjectData(System.String,System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.GetObjectData(System.String,System.String)">
             <summary>
             获取保存对象数据文件中的对象。
             </summary>
@@ -179,21 +187,21 @@
             <param name="FileName">文件名</param>
             <returns>文件内容</returns>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.GetDirIndex(System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.GetDirIndex(System.String)">
             <summary>
             获取路径索引目录。
             </summary>
             <param name="Path">路径</param>
             <returns>文件索引目录表</returns>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.GetFileIndex(System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.GetFileIndex(System.String)">
             <summary>
             获取文件索引目录。
             </summary>
             <param name="Path"></param>
             <returns>文件索引目录表</returns>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.GetFileIndexPID(System.String[],System.Int32)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.GetFileIndexPID(System.String[],System.Int32)">
             <summary>
             通过索引号获取文件。
             </summary>
@@ -201,7 +209,7 @@
             <param name="PID"></param>
             <returns>文件索引目录表</returns>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.MoveFile(System.String,System.String,System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.MoveFile(System.String,System.String,System.String)">
             <summary>
             移动文件至目标路径，随后向外界告知文件是否被移动。
             </summary>
@@ -210,7 +218,7 @@
             <param name="ObjectPath">目标路径</param>
             <returns></returns>
         </member>
-        <member name="M:HawkTools.IO.File.FILE.CopyFile(System.String,System.String,System.String)">
+        <member name="M:HawkTools.IO.FileCrtl.FILE.CopyFile(System.String,System.String,System.String)">
             <summary>
             复制文件副本至指定路径，如果目标路径下文件已经存在，则会自动覆盖，随后向外界告知文件是否被复制。
             </summary>
