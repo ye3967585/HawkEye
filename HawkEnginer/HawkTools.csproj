@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="Edit\Edit_FormColum.cs" />
     <Compile Include="Edit\Edit_ProgressBar.cs" />
-    <Compile Include="Engine.cs" />
     <Compile Include="IO\IO_Data.cs" />
     <Compile Include="IO\IO_File.cs" />
     <Compile Include="IO\IO_Graphical.cs" />

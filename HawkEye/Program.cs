@@ -17,19 +17,9 @@ namespace HawkEye
         {
             Console.Title = "HAWK EYE PROJECT";
             LevelList levelList = new LevelList();
-            HawkDosSystem dosSystem = new HawkDosSystem();
-            //FormColum formColum = new FormColum();
-            //DATA data = new DATA();
-            //HawkDosSystem dosSystem = new HawkDosSystem();
-            //FileSystem fileSystem = new FileSystem();
-            //FILE file = new FILE();
-            //TEXT t = new TEXT();
-            //GRAPHICAL g = new GRAPHICAL();
-
-            levelList.Level0();
-
-           //dosSystem.Command();
-            //Console.WriteLine(mail.Content);
+            HawkDosSystem dosSystem = new HawkDosSystem(System.IO.File.ReadAllText(@"Game\Save\QuickLoadData.hawksav"));
+            //levelList.Level0();
+            dosSystem.Command();
         }
     }
 }

@@ -21,16 +21,18 @@ namespace HawkEye.HEDS.Files
     {
         bool isBreak;                                                               //是否结束了输入
         string Input;                                                               //接受用户输入
+        string PlayDataPath;                                                        //玩家信息路径
+        string DiskInfoPath;                                                        //磁盘信息文件目录
+        string RootPath;                                                            //根目录
+        string PlayerName;                                                          //获取玩家名
+
         DiskInfo diskinfo;                                                          //磁盘信息对象
-        string PlayDataPath = "Game\\Save\\";                                       //玩家信息路径
-        string DiskInfoPath = "HEDS\\disk\\";                                       //磁盘信息文件目录
-        string RootPath = "HEDS\\disk\\";                                           //根目录
-        string Name = File.ReadAllText("Game\\Save\\QuickLoadData.hawksav");        //获取玩家名
         FormColum formColum;
-        DiskState diskState;
         TEXT text;
         FILE file;
         DATA data;
+
+        DiskState diskState;
 
         /// <summary>
         /// 初始化数据
@@ -38,6 +40,10 @@ namespace HawkEye.HEDS.Files
         /// <param name="Name">玩家名 以便寻找文件</param>
         public FileSystem(string Name)
         {
+            PlayerName = Name;
+            PlayDataPath = "Game\\Save\\";
+            DiskInfoPath = "HEDS\\disk\\";
+            RootPath = "HEDS\\disk\\";
             isBreak = false;
             text = new TEXT();
             file = new FILE();
@@ -56,7 +62,7 @@ namespace HawkEye.HEDS.Files
             GetDiskView();
             while (!isBreak)
             {
-                Console.Write("  {0}>SYSTEM\\DISK\\{1}>", Name, diskState);
+                Console.Write("  {0}>SYSTEM\\DISK\\{1}>", PlayerName, diskState);
                 Input = Console.ReadLine();
                 if (Input.Contains("cd"))
                 {
@@ -190,7 +196,7 @@ namespace HawkEye.HEDS.Files
             if (Input.Contains("list") && diskState != DiskState.OUT)
             {
                 Console.WriteLine("\n  Date\t\tTime\t\tName");
-                string[] Index = file.GetFileIndex(PlayDataPath + Name + @"\" + RootPath + diskState + "\\");
+                string[] Index = file.GetFileIndex(PlayDataPath + PlayerName + @"\" + RootPath + diskState + "\\");
                 for (int i = 0; i < Index.Length; i++)
                 {
                     Thread.Sleep(30);
@@ -212,7 +218,7 @@ namespace HawkEye.HEDS.Files
         /// <param name="FileName">文件名</param>
         void OpenFile(DiskState state, string FileName)
         {
-            string Path = "Game\\Save\\" + Name.ToUpper() + "\\HEDS\\disk\\" + state.ToString().ToUpper() + "\\";
+            string Path = "Game\\Save\\" + PlayerName.ToUpper() + "\\HEDS\\disk\\" + state.ToString().ToUpper() + "\\";
             string conect = file.GetTextData(Path, FileName);
             if (conect != null)
             {
@@ -233,7 +239,7 @@ namespace HawkEye.HEDS.Files
         /// <param name="FileName"></param>
         void DelFile(DiskState state, string FileName)
         {
-            string Path = "Game\\Save\\" + Name.ToUpper() + "\\HEDS\\disk\\" + state.ToString().ToUpper() + "\\";
+            string Path = "Game\\Save\\" + PlayerName.ToUpper() + "\\HEDS\\disk\\" + state.ToString().ToUpper() + "\\";
             if (file.DelFile(Path, FileName))
             {
                 Console.WriteLine("  已删除 {0}", FileName);
@@ -247,5 +253,6 @@ namespace HawkEye.HEDS.Files
 
         }
         #endregion
+
     }
 }

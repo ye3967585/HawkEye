@@ -21,22 +21,22 @@ namespace HawkEye.HEDS.Dos
         string Input;                                                               //输入
         int NowLine;                                                                //光标1的行位置
         int ERROR;                                                                  //错误计数
-        bool BreakThis = false;                                                     //是否跳出输入循环
-
-        TEXT text;                                                                  //文字输出    
-        FILE file;                                                                  //文件
-        DATA data;                                                                  //数据处理
-        FormColum formColum;                                                        //表列窗体
-        GRAPHICAL graphical;
-        PlayerData playerData;                                                      //玩家数据
+        bool BreakThis;                                                             //是否跳出输入循环
+        string PlayerName;
+        TEXT text;   
+        FILE file;
+        DATA data;
+        FormColum formColum;
+        GRAPHICAL graphical;                                                        
+        PlayerData playerData;     
         FileSystem fileSystem;
         MailSystem mailSystem;
-        string PlayDataPath = @"Game\Save\";                                        //存档路径                                       
-        string QuickLoad = File.ReadAllText(@"Game\Save\QuickLoadData.hawksav");    //玩家名
 
-        public HawkDosSystem()
+        public HawkDosSystem(string Name)
         {
+            PlayerName = Name;
             ERROR = 0;
+            BreakThis = false;
             text = new TEXT();
             file = new FILE();
             data = new DATA();
@@ -132,7 +132,6 @@ namespace HawkEye.HEDS.Dos
         #endregion
 
         #region 适用于本模块的私有方法集
-
         /// <summary>
         /// 获取信息
         /// </summary>
@@ -140,7 +139,7 @@ namespace HawkEye.HEDS.Dos
         void GetInfo(string Input = null)
         {
 
-            playerData = (PlayerData)file.GetObjectData(PlayDataPath + QuickLoad + @"\", "Gamesave_" + QuickLoad + ".hawksav");
+            playerData = (PlayerData)file.GetObjectData(@"Game\Save\" + PlayerName + @"\", "Gamesave_" + PlayerName + ".hawksav");
             //如果没有裁剪，那么肯定就是无参指令，否则就执行相应的参数
             if (Input.Contains("info"))
             {
@@ -159,7 +158,6 @@ namespace HawkEye.HEDS.Dos
             }
 
         }
-
         /// <summary>
         /// 用户帮助
         /// </summary>
@@ -187,7 +185,6 @@ namespace HawkEye.HEDS.Dos
                 Console.ForegroundColor = ConsoleColor.Green;
             }
         }
-
         /// <summary>
         /// 提示
         /// </summary>
@@ -205,26 +202,63 @@ namespace HawkEye.HEDS.Dos
             return ERROR;
         }
         #endregion
-
-
-
     }
-
-
-
-
+    #region  渗透对象
+    /// <summary>
+    /// 通用DOS接口
+    /// </summary>
     public interface IEmptyDosSystem
     {
+        /// <summary>
+        /// 开机动画
+        /// </summary>
+        /// <param name="Path"></param>
+        /// <param name="isImage"></param>
         void StartingSystem(string Path, bool isImage);
+        /// <summary>
+        /// 命令行窗口
+        /// </summary>
         void Command();
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <param name="Input"></param>
         void GetInfo(string Input = null);
+        /// <summary>
+        /// 帮助信息
+        /// </summary>
+        /// <param name="Input"></param>
         void Help(string Input);
     }
     /// <summary>
     /// 空的预置系统，用于玩家需要连接渗透的对象
     /// </summary>
-    class EmptyDosSystem
+    class EmptyDosSystem : IEmptyDosSystem
     {
+        public EmptyDosSystem(string Name)
+        {
 
+        }
+
+        public void Command()
+        {
+
+        }
+
+        public void GetInfo(string Input = null)
+        {
+
+        }
+
+        public void Help(string Input)
+        {
+
+        }
+
+        public void StartingSystem(string Path, bool isImage)
+        {
+
+        }
     }
+    #endregion
 }
