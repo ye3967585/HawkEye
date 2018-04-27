@@ -19,6 +19,14 @@ namespace HawkEye.LevelManager
         Even even = new Even("AA");
         bool isDead = false;                            //是否死亡
 
+
+        public void MainMenu()
+        {
+            
+        }
+
+
+
         public void Level0()
         {
             LevelText = "Game\\TEXT\\Level\\0\\Text_1.txt";

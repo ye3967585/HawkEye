@@ -210,6 +210,16 @@ namespace HawkEye.HEDS.Dos
 
     }
 
+
+
+
+    public interface IEmptyDosSystem
+    {
+        void StartingSystem(string Path, bool isImage);
+        void Command();
+        void GetInfo(string Input = null);
+        void Help(string Input);
+    }
     /// <summary>
     /// 空的预置系统，用于玩家需要连接渗透的对象
     /// </summary>
