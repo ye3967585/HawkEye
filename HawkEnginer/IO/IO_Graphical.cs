@@ -12,6 +12,7 @@ using System.Threading;
 using System;
 using System.Drawing;
 using DrawImageForConsole;
+using System.Runtime.InteropServices;
 
 namespace HawkTools.IO.Graphical
 {
@@ -29,16 +30,43 @@ namespace HawkTools.IO.Graphical
         TEXT text;
         FILE file;
         DRAW draw;
+        private IntPtr hLib;
+
+        #region WinAPI
+        [DllImport("kernel32.dll")]
+        private extern static IntPtr LoadLibrary(string path);
+        [DllImport("kernel32.dll")]
+        private extern static IntPtr GetProcAddress(IntPtr lib, string funcName);
+        [DllImport("kernel32.dll")]
+        private extern static bool FreeLibrary(IntPtr lib);
+        #endregion
+
 
         /// <summary>
         /// 初始化
         /// </summary>
-        public GRAPHICAL()
+        /// <param name="DLLPath">是否使用win API</param>
+        public GRAPHICAL(String DLLPath=null)
         {
             text = new TEXT();
             file = new FILE();
             draw = new DRAW();
+            if (DLLPath != null)
+            {
+                hLib = LoadLibrary(DLLPath);
+            }
         }
+        ~GRAPHICAL()
+        {
+            FreeLibrary(hLib);
+        }
+
+        public Delegate Invoke(string APIName, Type t)
+        {
+            IntPtr api = GetProcAddress(hLib, APIName);
+            return (Delegate)Marshal.GetDelegateForFunctionPointer(api, t);
+        }
+
         /// <summary>
         /// 绘制一副低级图形
         /// </summary>
@@ -102,8 +130,10 @@ namespace HawkTools.IO.Graphical
             draw.刻画图片(File, Width, Hight);
         }
 
-        #region 私有方法集
 
+
+        #region 私有方法集
+       
         #endregion
     }
 }

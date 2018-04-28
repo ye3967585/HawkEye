@@ -6,3 +6,5 @@ D:\My Appss\Hawk Eye Project\HawkEye\HawkEnginer\obj\Debug\HawkTools.csproj.Core
 D:\My Appss\Hawk Eye Project\HawkEye\HawkEnginer\obj\Debug\HawkEngine.dll
 D:\My Appss\Hawk Eye Project\HawkEye\HawkEnginer\obj\Debug\HawkEngine.pdb
 D:\My Appss\Hawk Eye Project\HawkEye\HawkEnginer\obj\Debug\HawkTools.csproj.CopyComplete
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\HawkEngine.dll.CodeAnalysisLog.xml
+D:\My Appss\Hawk Eye Project\HawkEye\HawkEye\HawkEngine.dll.lastcodeanalysissucceeded

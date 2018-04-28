@@ -232,10 +232,11 @@
             图形输出
             </summary>
         </member>
-        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.#ctor">
+        <member name="M:HawkTools.IO.Graphical.GRAPHICAL.#ctor(System.String)">
             <summary>
             初始化
             </summary>
+            <param name="DLLPath">是否使用win API</param>
         </member>
         <member name="M:HawkTools.IO.Graphical.GRAPHICAL.DrawLowGraphics(System.Char[],System.Char,System.Char,System.ConsoleColor,System.Int32)">
             <summary>
