@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Even.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HEDS\File.cs" />
     <Compile Include="HEDS\Mail.cs" />
     <Compile Include="HEDS\Dos.cs" />

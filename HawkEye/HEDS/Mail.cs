@@ -42,10 +42,17 @@ namespace HawkEye.HEDS.Mail
         Even even;
         Mail mail;
 
-        public MailSystem(string Name)
+        public MailSystem(string PathOrName=null)
         {
-            path = "Game\\Save\\" + Name + "\\HEDS\\Mail\\";
-            even = new Even(Name);
+            if (PathOrName == null)
+            {
+                path = "Game\\Save\\" + Name + "\\HEDS\\mail\\";
+            }else
+            {
+                path = PathOrName;
+            }
+            
+            even = new Even(PathOrName);
             isBreak = false;
             text = new TEXT();
             file = new FILE();
@@ -145,7 +152,7 @@ namespace HawkEye.HEDS.Mail
             {
                 mail = (Mail)file.GetObjectData(path, Input);
                 Console.WriteLine("\n  标题:\t\t{0}\n  发件人:\t{1}\n  内容:\n  {2}", mail.Title, mail.Sender, mail.Content);
-                Console.WriteLine("\n\n  接收于:\t\t{0}/{1}", mail.Date, mail.Time);
+                Console.WriteLine("\n  接收于:\t\t{0}/{1}", mail.Date, mail.Time);
             }
             else
             {

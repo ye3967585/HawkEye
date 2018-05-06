@@ -1,6 +1,8 @@
 ﻿using HawkEye.HEDS.Files;
 using HawkEye.HEDS.Mail;
 using HawkEye.UserData;
+using HawkEye.EvenManger;
+using HawkEye.LevelManager;
 using HawkTools.Edit;
 using HawkTools.IO.Data;
 using HawkTools.IO.FileCrtl;
@@ -23,18 +25,22 @@ namespace HawkEye.HEDS.Dos
         int ERROR;                                                                  //错误计数
         bool BreakThis;                                                             //是否跳出输入循环
         string PlayerName;
-        TEXT text;   
+        TEXT text;
         FILE file;
         DATA data;
+        Even even;
+        LevelList level;
         FormColum formColum;
-        GRAPHICAL graphical;                                                        
-        PlayerData playerData;     
+        GRAPHICAL graphical;
+        PlayerData playerData;
         FileSystem fileSystem;
         MailSystem mailSystem;
 
         public HawkDosSystem(string Name)
         {
             PlayerName = Name;
+            even = new Even(PlayerName);
+            level = new LevelList();
             ERROR = 0;
             BreakThis = false;
             text = new TEXT();
@@ -72,6 +78,7 @@ namespace HawkEye.HEDS.Dos
             Console.WriteLine("\n");
             GetInfo("info");                                // 显示基本的信息
             GetInfo("user");                                // 显示基本的信息
+            level.LevelCrtl(1);
             /*
              * 命令的判断思路：
              * 如果用户输入的命令（主命令代码）为命名列表中的一部分
@@ -107,8 +114,19 @@ namespace HawkEye.HEDS.Dos
                 }
                 else if (Input.Contains("mail"))
                 {
-                    mailSystem = new MailSystem(playerData.Name);
+                    mailSystem = new MailSystem();
                     mailSystem.Command();
+                }
+                else if (Input == "a")
+                {
+                    even.GetNewMail("Game\\Save\\" + PlayerName + "\\HEDS\\Mail\\", "MISSION_1015", "kYLE",
+                        "  来自于社会人口与管理总署的请求。\n" +
+                        "  近日，在北部国立中学一名教师 James Marsh 被家人反应其已失踪5天之久，目前无法使用任何的通\n" +
+                        "  用途径与其取得联系，我们已经调查了他的家人与朋友，无法取得任何有价值的信息.与此同时，与他\n" +
+                        "  一起失踪的人还有 Johon Dabrowski，此人是一名社会无业人员，他早在10年前就与他的家庭断绝联\n" +
+                        "  系。令人值得注意的是，两人竟在同一时间消失，这期间肯定有某种密切的联系。由于法律明文规定我们\n" +
+                        "  无权对公民的私人物品进行调查，我们希望你能够通过技术手段秘密调查\n" +
+                        "  James Marsh 与 Johon Dabrowski 的个人电脑，从中获取一些对于案件有所进展的讯息。", "来自于社会人口与管理总署的请求", true);
                 }
                 #region Help
                 else if (Input.Contains("help"))
@@ -118,7 +136,6 @@ namespace HawkEye.HEDS.Dos
                     Help(Input);
                 }
                 #endregion
-
                 else if (Input.Length < 1) ;
                 else
                 {
@@ -143,7 +160,7 @@ namespace HawkEye.HEDS.Dos
             //如果没有裁剪，那么肯定就是无参指令，否则就执行相应的参数
             if (Input.Contains("info"))
             {
-                Console.Write("\n  (C)1988-1997 Hawk Eye Dos System V 1.5.1\n");
+                Console.Write("\n  (C)1988-1997 Hawk Eye Dos System V 1.5.1\n\n");
             }
             else if (Input.Contains("user"))
             {
@@ -235,6 +252,8 @@ namespace HawkEye.HEDS.Dos
     /// </summary>
     class EmptyDosSystem : IEmptyDosSystem
     {
+        string Name;
+
         public EmptyDosSystem(string Name)
         {
 
