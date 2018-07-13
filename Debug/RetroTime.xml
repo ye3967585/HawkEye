@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RetroTime</name>
+    </assembly>
+    <members>
+        <member name="T:RetroTime.IO.FILE">
+            <summary>
+            文件处理
+            </summary>
+        </member>
+        <member name="M:RetroTime.IO.FILE.Create(System.String,System.String)">
+            <summary>
+            创建一个文本文件
+            </summary>
+            <param name="path">路径</param>
+            <param name="content">内容</param>
+        </member>
+        <member name="M:RetroTime.IO.FILE.Create(System.String,System.Object)">
+            <summary>
+            创建一个序列化对象信息的文件
+            </summary>
+            <param name="path">路径</param>
+            <param name="_object">对象</param>
+        </member>
+        <member name="M:RetroTime.IO.FILE.Delete(System.String)">
+            <summary>
+            删除文件
+            </summary>
+            <param name="path">路径</param>
+        </member>
+        <member name="M:RetroTime.IO.FILE.Move(System.String,System.String)">
+            <summary>
+            移动文件
+            </summary>
+            <param name="path">源文件路径</param>
+            <param name="objectivePath">目标路径</param>
+        </member>
+        <member name="M:RetroTime.IO.FILE.Get(System.String)">
+            <summary>
+            获得当前路径下文件的列表
+            </summary>
+            <param name="path">路径</param>
+            <returns>文件列表</returns>
+        </member>
+        <member name="M:RetroTime.IO.FILE.ReadText(System.String)">
+            <summary>
+            读取文本文件
+            </summary>
+            <param name="path">路径</param>
+            <returns>内容</returns>
+        </member>
+        <member name="M:RetroTime.IO.FILE.ReadObject(System.String)">
+            <summary>
+            读取对象文件
+            </summary>
+            <param name="path">路径</param>
+            <returns>内容</returns>
+        </member>
+        <member name="T:RetroTime.IO.DIR">
+            <summary>
+            路径处理
+            </summary>
+        </member>
+        <member name="M:RetroTime.IO.DIR.Create(System.String)">
+            <summary>
+            创建一个路径
+            </summary>
+            <param name="path">路径</param>
+        </member>
+        <member name="M:RetroTime.IO.DIR.Delete(System.String)">
+            <summary>
+            删除一个路径
+            </summary>
+            <param name="path">路径</param>
+        </member>
+        <member name="M:RetroTime.IO.DIR.Get(System.String)">
+            <summary>
+            获得当前路径下所有的子目录
+            </summary>
+            <param name="path">路径</param>
+            <returns>路径列表</returns>
+        </member>
+        <member name="T:RetroTime.Printer">
+            <summary>
+            标准输出,向视图中输出各种形式的字符串。
+            (慢于Console.Write或Console.WriteLine)
+            </summary>
+        </member>
+        <member name="M:RetroTime.Printer.Print">
+            <summary>
+            标准输出
+            </summary>
+        </member>
+        <member name="M:RetroTime.Printer.Print(System.Object)">
+            <summary>
+            标准字符串输出
+            </summary>
+            <param name="value">值</param>
+        </member>
+        <member name="M:RetroTime.Printer.Print(System.Object,System.Int32)">
+            <summary>
+            具有动态打字机效果的延时输出
+            </summary>
+            <param name="value">值</param>
+            <param name="delay">输出间隔（值越大输出速度越慢）</param>
+        </member>
+        <member name="M:RetroTime.Printer.Print(System.Object,System.Int32,System.Int32)">
+            <summary>
+            具有动态打字机效果的延时输出
+            </summary>
+            <param name="value">值</param>
+            <param name="delay">输出间隔（值越大输出速度越慢）</param>
+            <param name="line">换行值</param>
+        </member>
+        <member name="M:RetroTime.Printer.Print(System.Object,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            输出一行具有颜色的字符串
+            </summary>
+            <param name="value">值</param>
+            <param name="color">颜色</param>
+            <param name="background">背景色</param>
+        </member>
+        <member name="M:RetroTime.Printer.Print(System.Object,System.Int32,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            输出一行具有颜色并且具有动态打字机效果的字符串
+            </summary>
+            <param name="value">值</param>
+            <param name="color">颜色</param>
+            <param name="delay">输出间隔（值越大输出速度越慢）</param>
+            <param name="background">背景色</param>
+        </member>
+        <member name="M:RetroTime.Printer.Print(System.Object,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            输出一行具有颜色并且具有动态打字机效果的字符串
+            </summary>
+            <param name="value">值</param>
+            <param name="color">颜色</param>
+            <param name="delay">输出间隔（值越大输出速度越慢）</param>
+            <param name="line">换行值</param>
+            <param name="background">背景色</param>
+        </member>
+        <member name="M:RetroTime.Printer.PrintKeyWord(System.Object,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor,System.String[])">
+            <summary>
+            输出一行具有高亮标注出特定词语、字、句子的字符串
+            </summary>
+            <param name="value">值</param>
+            <param name="delay">输出间隔（值越大输出速度越慢）</param>
+            <param name="line">换行值</param>
+            <param name="color">文字颜色</param>
+            <param name="keyColor">标注颜色</param>
+            <param name="keyWord">关键词组</param>
+        </member>
+        <member name="T:RetroTime.STRING">
+            <summary>
+            字符串特殊处理
+            （不同于String类）
+            </summary>
+        </member>
+        <member name="P:RetroTime.STRING.Args">
+            <summary>
+            获取当前输入的全部内容
+            </summary>
+        </member>
+        <member name="M:RetroTime.STRING.InputSplit(System.String)">
+            <summary>
+            分割用户输入文本并获取命令与命令参数
+            (默认空格为分割符)
+            </summary>
+            <param name="inputValue">用户输入</param>
+            <returns>分割后的文本</returns>
+        </member>
+        <member name="M:RetroTime.STRING.InputSplit(System.String,System.Char[])">
+            <summary>
+            分割用户输入文本并获取命令与命令参数
+            (自定义分割符)
+            </summary>
+            <param name="inputValue">用户输入</param>
+            <param name="separator">自定义分割符</param>
+            <returns>分割后的文本</returns>
+        </member>
+        <member name="M:RetroTime.STRING.ToCharArray(System.String[])">
+            <summary>
+            将字符串数组转换为字符数组
+            </summary>
+            <param name="array">数组</param>
+            <returns>处理后的</returns>
+        </member>
+        <member name="M:RetroTime.STRING.ToCharArray(System.String)">
+            <summary>
+            将字符串转换为字符数组
+            </summary>
+            <param name="value">字符串</param>
+            <returns>处理后的</returns>
+        </member>
+        <member name="T:RetroTime.View">
+            <summary>
+            用于处理控制台视图中的元素
+            </summary>
+        </member>
+        <member name="P:RetroTime.View.SetWidth">
+            <summary>
+            获取/设置视图的尺寸——宽度
+            </summary>
+        </member>
+        <member name="P:RetroTime.View.SetHight">
+            <summary>
+            获取/设置视图的尺寸——高度
+            </summary>
+        </member>
+        <member name="M:RetroTime.View.Clear">
+            <summary>
+            清空/刷新视图
+            </summary>
+        </member>
+        <member name="M:RetroTime.View.Clear(System.Int32,System.Boolean)">
+            <summary>
+            清空/刷新指定的行
+            </summary>
+            <param name="lineValue">指定行</param>
+            <param name="returnLineTail">是否回到行尾</param>
+        </member>
+        <member name="M:RetroTime.View.Clear(System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            清空/刷新从指定起点处相应宽度的视图
+            </summary>
+            <param name="startPointValue">起始点</param>
+            <param name="lineValue">指定行</param>
+            <param name="width">宽度</param>
+            <param name="returnLineTail">是否回到行尾</param>
+        </member>
+        <member name="M:RetroTime.View.GetLength(System.String)">
+            <summary>
+            获取文本占据视图的宽度
+            </summary>
+            <param name="text">文本</param>
+            <returns></returns>
+        </member>
+        <member name="M:RetroTime.View.SetPostion(System.Int32,System.Int32)">
+            <summary>
+            设置光标的行列位置
+            </summary>
+            <param name="line">行</param>
+            <param name="row">列</param>
+        </member>
+        <member name="T:RetroTime.Draw">
+            <summary>
+            在控制台中简单绘图
+            </summary>
+        </member>
+        <member name="P:RetroTime.Draw.Hight">
+            <summary>
+            图形高度
+            </summary>
+        </member>
+        <member name="P:RetroTime.Draw.Width">
+            <summary>
+            图形宽度
+            </summary>
+        </member>
+        <member name="P:RetroTime.Draw.ImagePath">
+            <summary>
+            图片文件
+            </summary>
+        </member>
+        <member name="M:RetroTime.Draw.DrawImage">
+            <summary>
+            绘制图形
+            </summary>
+        </member>
+        <member name="T:RetroTime.UI.Progressbar">
+            <summary>
+            进度条
+            </summary>
+        </member>
+        <member name="P:RetroTime.UI.Progressbar.Len">
+            <summary>
+            进度条长度
+            </summary>
+        </member>
+        <member name="P:RetroTime.UI.Progressbar.Speed">
+            <summary>
+            行进速度
+            </summary>
+        </member>
+        <member name="P:RetroTime.UI.Progressbar.Filler">
+            <summary>
+            填充物
+            </summary>
+        </member>
+        <member name="P:RetroTime.UI.Progressbar.Color">
+            <summary>
+            颜色
+            </summary>
+        </member>
+        <member name="P:RetroTime.UI.Progressbar.FillerColor">
+            <summary>
+            填充物颜色
+            </summary>
+        </member>
+        <member name="M:RetroTime.UI.Progressbar.Draw">
+            <summary>
+            绘制进度条
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,15 @@
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\bin\Debug\Hawk Eye Project.exe.config
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\bin\Debug\Hawk Eye Project.exe
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\bin\Debug\Hawk Eye Project.pdb
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\bin\Debug\RetroTime.dll
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\bin\Debug\RetroTime.Draw.dll
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\bin\Debug\RetroTime.pdb
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\bin\Debug\RetroTime.xml
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\obj\Debug\Hawk Eye Project.csprojAssemblyReference.cache
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\obj\Debug\Hawk Eye Project.csproj.CoreCompileInputs.cache
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\obj\Debug\Hawk Eye Project.csproj.CopyComplete
+E:\Hawk Eye Project\Debug\START.exe.config
+E:\Hawk Eye Project\Debug\START.exe
+E:\Hawk Eye Project\Debug\START.pdb
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\obj\Debug\START.exe
+E:\Hawk Eye Project\Hawk Eye Project\Hawk Eye Project\obj\Debug\START.pdb

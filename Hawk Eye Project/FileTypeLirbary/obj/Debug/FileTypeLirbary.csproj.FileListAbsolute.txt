@@ -1,0 +1,6 @@
+E:\Hawk Eye Project\Debug\dll\HAWK_FILETYPE.dll
+E:\Hawk Eye Project\Debug\dll\HAWK_FILETYPE.pdb
+E:\Hawk Eye Project\Hawk Eye Project\FileTypeLirbary\obj\Debug\FileTypeLirbary.csprojAssemblyReference.cache
+E:\Hawk Eye Project\Hawk Eye Project\FileTypeLirbary\obj\Debug\FileTypeLirbary.csproj.CoreCompileInputs.cache
+E:\Hawk Eye Project\Hawk Eye Project\FileTypeLirbary\obj\Debug\HAWK_FILETYPE.dll
+E:\Hawk Eye Project\Hawk Eye Project\FileTypeLirbary\obj\Debug\HAWK_FILETYPE.pdb
